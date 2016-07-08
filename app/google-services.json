@@ -1,0 +1,112 @@
+{
+  "project_info": {
+    "project_number": "357595176166",
+    "project_id": "globanese-1307"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357595176166:android:da85803ff3e42e5b",
+        "android_client_info": {
+          "package_name": "com.iphonealsham.globanese"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "357595176166-bsi12huukeu9bn7d4b7d3ehf92gug0bj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iphonealsham.globanese",
+            "certificate_hash": "620373E44309DD6035E4688B494CF2DAB5D8F94C"
+          }
+        },
+        {
+          "client_id": "357595176166-og7uan26mlj1q5fp6srops0q8bnsalft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+
+         "client_info": {
+        "mobilesdk_app_id": "1:357595176166:android:9c5a6f3c493c92e4",
+        "android_client_info": {
+          "package_name": "com.iso.globanese"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "357595176166-og7uan26mlj1q5fp6srops0q8bnsalft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357595176166:android:7118b856b38fb327",
+        "android_client_info": {
+          "package_name": "com.globanese.is"
+        }
+      },
+
+            "oauth_client": [
+        {
+          "client_id": "357595176166-nsk02g7f38b0fk4r3m39o7b49s541chb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.globanese.is",
+            "certificate_hash": "4031EACEBFC5CDFF8FE7961E3B237441CAA5462F"
+          }
+        },
+        {
+          "client_id": "357595176166-og7uan26mlj1q5fp6srops0q8bnsalft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxK-Y3ECBipv1lneIFIvbcR9NhYjgRm0Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

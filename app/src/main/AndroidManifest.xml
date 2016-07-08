@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.globanese.is">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <application
+        android:name=".app.ApplicationController"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity android:name=".activities.MainActivity">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".activities.LoginActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.SignUpActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.ForgetPasswordActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.HomeActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.SplashScreen"
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".activities.SignUpCompleteActivity"
+            android:theme="@style/AppThemeDetails"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.linkedin.LinkedInLoginActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.ProfileActivity"
+            android:theme="@style/AppThemeDetails"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".activities.AboutProfileActivity" />
+        <activity android:name=".activities.PostDetailActivity" />
+        <activity android:name=".activities.TimeLineActivity" />
+        <activity android:name=".activities.HorizantalRecycleView" />
+        <activity
+            android:name=".activities.CommentActivity"
+            android:theme="@style/AppThemeDetails"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".activities.EditNationalityActivity" />
+        <activity android:name=".activities.EditAddressActivity" />
+        <activity android:name=".activities.EditCommunityActivity" />
+        <activity android:name=".activities.EditphoneActivity" />
+        <activity android:name=".activities.EditDobActivity" />
+        <activity android:name=".activities.EdiLanguageActivity" />
+        <activity android:name=".activities.EditJobActivity" />
+        <activity
+            android:name=".activities.Main2Activity"
+            android:theme="@style/AppThemeDetails"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".activities.WritePostActivity" />
+        <activity android:name=".activities.LocationActivity"></activity>
+    </application>
+
+</manifest>

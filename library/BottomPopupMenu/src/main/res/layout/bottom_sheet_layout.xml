@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:layout_above="@+id/collapsing_view"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/preview_image"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="#fff"
+                android:padding="3dp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                />
+        </FrameLayout>
+
+        <com.kennyc.bottomsheet.CollapsingView
+            android:layout_alignParentBottom="true"
+            android:id="@+id/collapsing_view"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            >
+            <LinearLayout
+                android:id="@+id/container"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:background="@android:color/white">
+
+                <TextView
+                    android:id="@+id/title"
+                    style="@style/BottomSheet.Title"
+                    tools:text="Title" />
+
+                <GridView
+                    android:id="@+id/grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"
+                    android:listSelector="@drawable/bs_list_selector"
+                    android:stretchMode="columnWidth"
+                    tools:listitem="@layout/bottom_sheet_list_item" />
+
+            </LinearLayout>
+        </com.kennyc.bottomsheet.CollapsingView>
+    </RelativeLayout>
+
+
+
+</LinearLayout>

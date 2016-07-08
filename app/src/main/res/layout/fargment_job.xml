@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+    <FrameLayout
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/back"
+            android:tint="@color/colorPrimary"
+            android:layout_gravity="center|left"
+        android:padding="5dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Edit Profile"
+            android:id="@+id/hedarlayout"
+            android:textColor="#333"
+            android:textSize="16dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            android:id="@+id/done"
+            android:padding="5dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="10dp"
+
+            />
+
+    </FrameLayout>
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#e9ebee"
+        >
+
+
+
+        <LinearLayout
+            android:id="@+id/layout_community"
+            android:layout_marginTop="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_about_box"
+            >
+            <FrameLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_gravity="left|center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Job/Company"
+                        android:paddingLeft="10dp"
+                        android:textColor="#525f67"
+                        android:textSize="16sp"
+
+                        />
+
+                </LinearLayout>
+
+
+
+            </FrameLayout>
+            <View
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e9ebee"
+                />
+
+            <FrameLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_gravity="left|center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+
+                        android:fontFamily="Lato"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Current  job "
+                        android:paddingLeft="10dp"
+                        android:paddingRight="45dp"
+                        android:textColor="#525f67"
+                        android:textSize="14sp"
+
+                        />
+                    <EditText
+                      android:id="@+id/textview_currentjob"
+                        android:background="@android:color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="UI/UX Designer"
+                        android:textColor="#979797"
+                        android:textSize="14sp"
+                        android:layout_gravity="right|center"
+                        />
+
+                </LinearLayout>
+
+            </FrameLayout>
+            <View
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e9ebee"
+                />
+            <FrameLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_gravity="left|center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:fontFamily="Lato"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Company"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="30dp"
+
+                        android:textColor="#525f67"
+                        android:textSize="14sp"
+
+                        />
+                    <EditText
+                        android:id="@+id/textview_company"
+                        android:background="@android:color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="iPhone Alsham"
+                        android:textColor="#979797"
+                        android:textSize="14sp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_gravity="right|center"
+                        />
+
+                </LinearLayout>
+
+
+
+            </FrameLayout>
+            <View
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e9ebee"
+                />
+            <FrameLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_gravity="left|center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:fontFamily="Lato"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Website"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="30dp"
+                        android:textColor="#525f67"
+                        android:textSize="14sp"
+
+                        />
+                    <EditText
+                        android:id="@+id/textview_website"
+                        android:background="@android:color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="iPhonealsham.ps"
+                        android:textColor="#979797"
+                        android:textSize="14sp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_gravity="right|center"
+                        />
+
+                </LinearLayout>
+
+
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New ToggleButton"
+        android:id="@+id/toggleButton" />
+
+
+</LinearLayout>

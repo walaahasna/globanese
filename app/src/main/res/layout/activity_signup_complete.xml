@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7f000000">
+
+    <LinearLayout
+        android:id="@+id/notcomplete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/round_white"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:visibility="gone">
+
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:padding="3dp"
+            android:src="@drawable/close" />
+
+        <TextView
+            android:id="@+id/compete_your_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="Complete Your Profile !"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:textStyle="italic" />
+
+        <FrameLayout
+            android:id="@+id/imageframe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:visibility="gone">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/user_image_placeholder"
+                app:civ_border_color="#e8e8e8"
+                app:civ_border_width="1dp" />
+
+            <ImageView
+                android:id="@+id/choose_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:src="@drawable/add_image_icon" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/genderframe"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round_complete_signup"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/gender_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center"
+                android:paddingLeft="20dp"
+                android:paddingRight="40dp"
+                android:text="Gender"
+                android:textColor="#9e9e9e"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/arrow_down" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/dobframe"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round_complete_signup"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/dob_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center"
+                android:paddingLeft="20dp"
+                android:paddingRight="40dp"
+                android:text="Date Of Birth"
+                android:textColor="#9e9e9e"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/arrow_down" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/name_layout"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/fname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_complete_signup"
+                android:gravity="left|center"
+                android:hint="First Name"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:singleLine="true"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="#9e9e9e"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/lname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_complete_signup"
+                android:gravity="left|center"
+                android:hint="Last Name"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:singleLine="true"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="#9e9e9e"
+                android:textSize="14sp"
+
+                />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round_complete_signup"
+            android:gravity="left|center"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:singleLine="true"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="#9e9e9e"
+            android:textSize="14sp" />
+
+        <FrameLayout
+            android:id="@+id/community_layout"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round_complete_signup">
+
+            <TextView
+                android:id="@+id/community_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center"
+                android:paddingLeft="20dp"
+                android:paddingRight="40dp"
+                android:text="Community"
+                android:textColor="#9e9e9e"
+                android:textSize="14sp" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/arrow_down" />
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/start_button"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_login_button"
+            android:text="Let's Start"
+            android:textAllCaps="false"
+            android:textColor="#fff" />
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:id="@+id/complete"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/round_white"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+
+        <ImageView
+            android:id="@+id/closee"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:padding="5dp"
+            android:src="@drawable/close" />
+
+        <TextView
+            android:id="@+id/complete_profile_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Complete Your Profile !"
+            android:textColor="@color/colorPrimary"
+            android:textSize="17sp"
+            android:textStyle="italic"
+
+            />
+
+        <FrameLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_imagee"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/cameraphoto"
+                android:visibility="gone"
+                app:civ_border_color="#e8e8e8"
+                app:civ_border_width="1dp" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/profile_image_font"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="40dp"
+                android:text="Profile image"
+                android:textColor="#c6c6c6"
+                android:textSize="15sp"
+                android:visibility="gone" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/gender_layoutt"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round_complete_signup"
+            android:visibility="gone">
+
+            <TextView
+
+                android:id="@+id/gender_textt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center"
+                android:paddingLeft="20dp"
+                android:paddingRight="40dp"
+                android:text="Gender"
+                android:textColor="#9e9e9e"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/arrow_down" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/dob_layoutt"
+
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round_complete_signup"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/dob_textt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center"
+                android:paddingLeft="20dp"
+                android:paddingRight="40dp"
+                android:text="Date Of Birth"
+                android:textColor="#9e9e9e"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/arrow_down" />
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/community_layoutt"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round_complete_signup"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/community_textt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center"
+                android:paddingLeft="20dp"
+                android:paddingRight="40dp"
+                android:text="Community"
+                android:textColor="#9e9e9e"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/arrow_down" />
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/start_buttonn"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_login_button"
+            android:text="Let's Start"
+            android:textAllCaps="false"
+            android:textColor="#fff" />
+
+    </LinearLayout>
+</FrameLayout>

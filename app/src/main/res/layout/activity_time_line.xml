@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e9ebee"
+    tools:context="com.globanese.is.activities.TimeLineActivity">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fff"
+        android:layout_alignParentTop="true"
+        android:id="@+id/time_line_header"
+        >
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    >
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/profile"
+        app:civ_border_width="0dp"
+        app:civ_border_color="#ffffff"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+ android:layout_margin="10dp"
+
+        />
+        <TextView
+            android:layout_gravity="center|center_horizontal"
+            android:gravity="center"
+            android:padding="2dp"
+           android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Timeline"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="#000"
+            android:textSize="16sp"
+            />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        >
+
+    <ImageButton
+      android:id="@+id/wrire_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/squre"
+                />
+        <ImageButton
+           android:layout_alignTop="@+id/wrire_post"
+         android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+              android:background="@drawable/pen"
+
+            />
+    </RelativeLayout>
+</RelativeLayout>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </RelativeLayout>
+    <ListView
+        android:layout_marginTop="3dp"
+        android:layout_below="@+id/time_line_header"
+        android:layout_above="@+id/time_line_footer"
+        android:overScrollMode="never"
+        android:clipToPadding="false"
+        android:dividerHeight="3dp"
+        android:divider="@android:color/transparent"
+        android:id="@+id/List_time_line"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="3dp"
+        >
+
+
+    </ListView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fff"
+        android:layout_alignParentBottom="true"
+      android:id="@+id/time_line_footer"
+
+
+        >
+
+        <ImageButton
+            android:id="@+id/home_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+               android:layout_marginLeft="20dp"
+            android:background="@drawable/shape"
+            android:layout_marginRight="30dp"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+
+            >
+        <ImageButton
+            android:id="@+id/notification_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="35dp"
+             android:background="@drawable/pin"
+            />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+        <ImageButton
+
+            android:layout_marginRight="30dp"
+            android:id="@+id/message_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/message"
+            />
+
+            <TextView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:background="@drawable/circle"
+                android:layout_alignTop="@+id/message_button"
+                android:layout_marginLeft="15dp"
+
+                />
+            </RelativeLayout>
+        <ImageButton
+            android:layout_toRightOf="@+id/message_button"
+
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/search"
+            />
+
+        </LinearLayout>
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+   android:layout_alignParentRight="true"
+    android:layout_centerVertical="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginRight="2dp"
+    >
+        <ImageButton
+          android:layout_marginRight="35dp"
+            android:id="@+id/friend_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_alignParentRight="true"
+
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+
+              android:background="@drawable/f1"
+            />
+
+        <ImageButton
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+
+            android:background="@drawable/f2"
+            android:layout_marginRight="18dp"
+
+            />
+
+</RelativeLayout>
+
+
+    </RelativeLayout>
+</RelativeLayout>

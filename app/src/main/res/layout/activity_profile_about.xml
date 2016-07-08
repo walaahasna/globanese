@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+    <FrameLayout
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/back"
+            android:tint="@color/colorPrimary"
+            android:layout_gravity="center|left"
+            android:padding="2dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="About"
+            android:id="@+id/hedarlayout"
+           android:textColor="#333"
+            android:textSize="16sp"
+            />
+
+    </FrameLayout>
+
+
+    <ScrollView
+        android:background="#e9ebee"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/layout_address"
+                android:paddingTop="5dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_about_box"
+                >
+                <FrameLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp">
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_gravity="left|center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/address_icon"
+                            />
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Address"
+                            android:id="@+id/title_address"
+                            android:paddingLeft="10dp"
+                            android:textSize="15sp"
+                            android:textColor="#525f67"
+
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Edit"
+                        android:textColor="#d6d6d6"
+                        android:id="@+id/edit_address"
+                        android:layout_gravity="right|center"
+                                    android:padding="3dp"
+                        />
+
+                </FrameLayout>
+
+                <View
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e9ebee"
+                    />
+
+                <TextView
+                    android:id="@+id/textview_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tal Hawal, Gaza, Gaza Strip"
+                    android:textColor="#979797"
+                    android:paddingLeft="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_community"
+                android:layout_marginTop="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_about_box"
+                >
+                <FrameLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp">
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_gravity="left|center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/community"
+                            />
+
+                        <TextView
+                            android:id="@+id/title_community"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Community"
+                            android:paddingLeft="10dp"
+                            android:textSize="15sp"
+                            android:textColor="#525f67"
+
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/edit_community"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Edit"
+                        android:textColor="#d6d6d6"
+android:padding="3dp"
+                        android:layout_gravity="right|center"
+                        />
+
+                </FrameLayout>
+
+                <View
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e9ebee"
+                    />
+
+                <TextView
+                    android:id="@+id/textview_community"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Palestine"
+                    android:textColor="#979797"
+                    android:paddingLeft="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_phone"
+                android:layout_marginTop="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_about_box"
+                >
+                <FrameLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp">
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_gravity="left|center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/phone"
+                            />
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Phone"
+                            android:paddingLeft="10dp"
+                            android:textSize="15sp"
+                            android:textColor="#525f67"
+
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Edit"
+                        android:id="@+id/edit_phone"
+                             android:padding="5dp"
+                        android:textColor="#d6d6d6"
+
+                        android:layout_gravity="right|center"
+                        />
+
+                </FrameLayout>
+
+                <View
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e9ebee"
+                    />
+
+                <TextView
+                    android:id="@+id/textview_phone"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="+972599582282"
+                    android:textColor="#979797"
+                    android:paddingLeft="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:id="@+id/layout_dob"
+                android:layout_marginTop="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_about_box"
+                >
+                <FrameLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp">
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_gravity="left|center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/birhtday"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Birth"
+                            android:paddingLeft="10dp"
+                            android:textSize="15sp"
+                            android:textColor="#525f67"
+
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/edit_dob"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Edit"
+                        android:textColor="#d6d6d6"
+android:padding="5dp"
+                        android:layout_gravity="right|center"
+                        />
+
+                </FrameLayout>
+
+                <View
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e9ebee"
+                    />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+                <TextView
+                    android:id="@+id/textview_dob"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="09 Oct 1993"
+                    android:textColor="#979797"
+                    android:paddingLeft="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    />
+
+    <TextView
+        android:id="@+id/textview_dob2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" , in Palestine"
+        android:textColor="#979797"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        />
+</LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:id="@+id/layout_language"
+                android:layout_marginTop="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_about_box"
+                >
+                <FrameLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp">
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_gravity="left|center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/language_icon"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Languages"
+                            android:paddingLeft="10dp"
+                            android:textSize="15sp"
+                            android:textColor="#525f67"
+                            android:textStyle="bold"
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Edit"
+                        android:textColor="#d6d6d6"
+                          android:padding="5dp"
+                        android:id="@+id/edit_language"
+                        android:layout_gravity="right|center"
+                        />
+
+                </FrameLayout>
+
+                <View
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e9ebee"
+                    />
+
+                <TextView
+                    android:id="@+id/textview_language"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Arabic, English"
+                    android:textColor="#979797"
+                    android:paddingLeft="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:id="@+id/layout_nationnality"
+                android:layout_marginTop="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_about_box"
+                >
+                <FrameLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp">
+                    <LinearLayout
+
+                        android:gravity="center"
+                        android:layout_gravity="left|center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/nationality_icon"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nationality"
+
+                            android:paddingLeft="10dp"
+                            android:textSize="15sp"
+                            android:textColor="#525f67"
+                            android:textStyle="bold"
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Edit"
+                        android:textColor="#d6d6d6"
+                       android:padding="5dp"
+                        android:layout_gravity="right|center"
+                        android:id="@+id/edit_nationality"
+                        />
+
+                </FrameLayout>
+
+                <View
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e9ebee"
+                    />
+
+                <TextView
+                    android:id="@+id/textview_nationality"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Palestinian"
+                    android:textColor="#979797"
+                    android:paddingLeft="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_job"
+                android:layout_marginTop="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_about_box"
+                >
+                <FrameLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp">
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_gravity="left|center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/job"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Job/Company"
+                            android:paddingLeft="10dp"
+                            android:textSize="15sp"
+                            android:textColor="#525f67"
+                            android:textStyle="bold"
+
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/edit_job"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Edit"
+                        android:textColor="#d6d6d6"
+                              android:padding="5dp"
+                        android:layout_gravity="right|center"
+                        />
+
+                </FrameLayout>
+
+                <View
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e9ebee"
+                    />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Current job : "
+                            android:textColor="#171717"
+                               android:textSize="14sp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="developer"
+                            android:textColor="#a3a3a3"
+                            android:textSize="14sp"
+                            android:paddingLeft="1dp"
+                            android:paddingRight="1dp"
+                            android:id="@+id/textview_job_name"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" in "
+                            android:paddingRight="1dp"
+                            android:textColor="#a3a3a3"
+                            />
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="iphonealsham"
+                            android:textColor="#a2a2ff"
+                            android:textSize="14sp"
+                            android:inputType="textMultiLine"
+                            android:id="@+id/textview_job_place"
+                            android:linksClickable="true"
+                            android:lines="2"
+
+                            android:autoLink="web"
+
+
+
+                            />
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New ToggleButton"
+        android:id="@+id/toggleButton" />
+
+
+</LinearLayout>

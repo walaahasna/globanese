@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="@color/colorPrimary"
+
+    >
+
+
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:background="@drawable/rounded_box_button_down"
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/choose_pic_gallery"
+            android:padding="20dp"
+
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            >
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/gallery"
+                android:tint="@color/colorPrimary"
+                />
+            <TextView
+                android:paddingTop="5dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gallery"
+                android:textColor="@color/colorPrimary"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/choose_pic_camera"
+            android:padding="20dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            >
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/instagram_down"
+                android:tint="@color/colorPrimary"
+                />
+            <TextView
+                android:paddingTop="5dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Camera"
+                android:textColor="@color/colorPrimary"
+                />
+        </LinearLayout>
+
+        </LinearLayout>
+
+</LinearLayout>
