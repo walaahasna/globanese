@@ -23,7 +23,7 @@
             android:src="@drawable/back"
             android:tint="@color/colorPrimary"
             android:layout_gravity="center|left"
-        android:padding="5dp"
+            android:padding="5dp"
             />
 
         <TextView

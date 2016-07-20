@@ -41,11 +41,12 @@ public class ProfileActivity extends BaseActivity {
     @InjectView(R.id.root)
     View rootView;
     List<PostObject> PostArray;
-    @InjectView(R.id.back)
-    View back;
+
     float minHeaderHeight;
     View list_header;
     View about_linear;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class ProfileActivity extends BaseActivity {
         setContentView(R.layout.activity_profile);
         ButterKnife.inject(this, this);
         StaticClass.overrideFonts(this, findViewById(android.R.id.content));
-
+        ImageView back = (ImageView) findViewById(R.id.back);
         contex = ProfileActivity.this;
         minHeaderHeight = getResources().getDimension(R.dimen.action_bar_height);
 
@@ -65,12 +66,21 @@ public class ProfileActivity extends BaseActivity {
             menu_status_bar1.getLayoutParams().height = StaticClass.getStatusBarHeight(this);
             minHeaderHeight += StaticClass.getStatusBarHeight(this);
 
-
         }
 ////////////////////////////////set style of list
         list_header = getLayoutInflater().inflate(R.layout.time_line_header, null);
         ImageView write_post = (ImageView) list_header.findViewById(R.id.write_post2);
+        ImageView timeline_activity = (ImageView) list_header.findViewById(R.id.  timeline_activity);
 
+
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProfileActivity.this,TimeLineActivity.class);
+                startActivity(i);
+            }
+        });
 
         LinearLayout about_linear = (LinearLayout) list_header.findViewById(R.id.about_linear);
 
@@ -83,6 +93,7 @@ public class ProfileActivity extends BaseActivity {
                 .minHeightHeader((int) minHeaderHeight)
                 .animator(new IconAnimator(list_header))
                 .build();
+
 
 
         //////////////////////////////////////////get post requset
@@ -170,6 +181,7 @@ public class ProfileActivity extends BaseActivity {
         });
 
 
+
         write_post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -178,53 +190,29 @@ public class ProfileActivity extends BaseActivity {
             }
         });
 
+
+
+        timeline_activity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProfileActivity.this, TimeLineActivity.class);
+                startActivity(i);
+
+            }
+        });
+
     }
 
 
-    public void getPost() {
-        new Project_Web_Functions().GetPost(getLogInUser().getAccess_token(), new UniversalCallBack() {
-                    @Override
-                    public void onResponse(Object result) {
-                        ResponseObject responseObject = (ResponseObject) result;
-                        if (responseObject.getStatus()) {
-                            //PostObject user=new PostObject();
 
-                            if (responseObject.getStatus()) {
-                                PostArray = (ArrayList<PostObject>) responseObject.getItems();
-                            }
-
-                        } else {
-                            ArrayList<ErrorMsg> errors = responseObject.getErrors();
-                            for (ErrorMsg errorMsg : errors) {
-
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Object result) {
-                        Toast.makeText(getApplicationContext(), "error :(", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onFinish() {
-                        dismissProgressDialog();
-                    }
-                }
-        );
-    }
 
 
     private void initViews() {
         about_linear = list_header.findViewById(R.id.about_linear);
 
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+
+
         about_linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -245,6 +233,7 @@ class IconAnimator extends HeaderStikkyAnimator {
 
     @Override
     public AnimatorBuilder getAnimatorBuilder() {
+
 
 
      /* CircleImageView i= (CircleImageView) getHeader().findViewById(R.id.profile_image);

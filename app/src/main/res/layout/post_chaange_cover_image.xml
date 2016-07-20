@@ -1,135 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
+    android:orientation="vertical"
 
     >
 
     <LinearLayout
 
-        android:gravity="center|left"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center|left"
+        android:orientation="horizontal">
+
         <LinearLayout
-            android:padding="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/profile_image"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/profile"
-                app:civ_border_width="0dp"
-                app:civ_border_color="#ffffff"/>
+                app:civ_border_color="#ffffff"
+                app:civ_border_width="0dp" />
         </LinearLayout>
+
         <LinearLayout
 
-            android:orientation="vertical"
-            android:gravity="center|left"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center|left"
+            android:orientation="vertical">
+
             <LinearLayout
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                >
+                android:layout_marginBottom="2dp">
+
                 <TextView
-                    android:layout_gravity="left"
+                    android:id="@+id/profile_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="13sp"
+                    android:layout_gravity="left"
                     android:text="Craig Lopez"
                     android:textColor="#000"
-                    android:id="@+id/profile_name"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="13sp"
-                    android:text="change"
-                    android:paddingLeft="4dp"
-                    android:textColor="#727274"
-                    />
+                    android:textSize="13sp" />
 
                 <TextView
-                    android:layout_gravity="left"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="13sp"
+                    android:paddingLeft="4dp"
+                    android:text="change"
+                    android:textColor="#727274"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/chage_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:paddingLeft="4dp"
                     android:text="IT Student IUG"
                     android:textColor="#000"
-                    android:paddingLeft="4dp"
-                    android:id="@+id/chage_item"
-                    />
+                    android:textSize="13sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="13sp"
-                    android:text="cover "
                     android:paddingLeft="4dp"
+                    android:text="cover "
                     android:textColor="#727274"
+                    android:textSize="13sp"
 
                     />
+
                 <ImageView
+
                     android:id="@+id/post_remove"
-                    android:paddingLeft="40dp"
-                    android:layout_gravity="right|center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="right|center"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
                     android:src="@drawable/profile_options_icon"
                     android:tint="#d4d4d4"
+
                     />
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:layout_marginTop="2dp"
-                android:gravity="center|left"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center|left">
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="13sp"
                     android:text="image"
                     android:textColor="#adadad"
+                    android:textSize="13sp"
 
                     />
             </LinearLayout>
+
             <LinearLayout
-                android:layout_marginTop="2dp"
-                android:gravity="center|left"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center|left">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/profile_time_icon"
                     android:layout_marginRight="5dp"
-                    />
+                    android:src="@drawable/profile_time_icon" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="13sp"
+                    android:paddingRight="12dp"
                     android:text="2h"
                     android:textColor="#adadad"
-                    android:paddingRight="12dp"
-                    />
+                    android:textSize="13sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="13sp"
                     android:text="Palestine"
                     android:textColor="#adadad"
+                    android:textSize="13sp"
 
                     />
             </LinearLayout>
@@ -139,9 +149,9 @@
 
 
     <LinearLayout
-        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal"
         android:weightSum="1">
 
@@ -152,25 +162,26 @@
             android:layout_weight="1">
 
             <ImageView
+                android:id="@+id/profile_one_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/piza"
                 android:scaleType="centerCrop"
-                android:id="@+id/profile_one_image"
+                android:src="@drawable/piza"
 
                 />
         </LinearLayout>
 
 
-
     </LinearLayout>
+
     <FrameLayout
-        android:paddingTop="15dp"
+        android:paddingTop="5dp"
         android:paddingBottom="13dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_gravity="left"
             android:gravity="center|left"
@@ -181,6 +192,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/time_line_like"
+                android:id="@+id/time_line_like"
                 />
             <TextView
                 android:id="@+id/profile_No_like"
@@ -218,13 +230,14 @@
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 />
+
             <TextView
-                android:id="@+id/post_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#aeaeae"
                 android:textSize="12sp"
                 android:text="Comments"
+                android:id="@+id/post_comment"
                 />
         </LinearLayout>
         <LinearLayout
@@ -255,11 +268,13 @@
                 android:paddingRight="4dp"
                 />
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#aeaeae"
                 android:textSize="12sp"
                 android:text="Share"
+                android:id="@+id/timline_share"
 
                 />
 
@@ -267,10 +282,10 @@
 
 
     </FrameLayout>
+
     <View
-        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="#e9ebee"
-        />
+        android:layout_marginTop="5dp"
+        android:background="#e9ebee" />
 </LinearLayout>

@@ -36,6 +36,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+
 public class EditDobActivity extends BaseActivity  {
 TextView edit_dob;
     List<String> list;
@@ -47,6 +49,7 @@ TextView edit_dob;
     Context con;
     NationalityAdapter adapter;
     TextView  done;
+
 
 
     @Override

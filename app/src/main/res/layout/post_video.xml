@@ -80,7 +80,7 @@
                     android:id="@+id/profile_country"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Palestine"
+
                     android:textColor="#adadad"
                     android:textSize="13sp"
 
@@ -115,21 +115,13 @@
             android:layout_height="match_parent"
             android:background="#000">
 
-            <VideoView
+            <WebView
                 android:id="@+id/profile_video"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@drawable/piza" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
 
 
-            <ImageButton
-
-                android:id="@+id/video_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:background="@android:color/transparent"
-                android:src="@drawable/video_icon" />
+                />
 
 
         </FrameLayout>
@@ -137,74 +129,77 @@
     </LinearLayout>
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
         android:paddingBottom="13dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingTop="15dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
             android:layout_gravity="left"
             android:gravity="center|left"
-            android:orientation="horizontal">
-
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/time_line_like" />
-
+                android:src="@drawable/time_line_like"
+                android:id="@+id/time_line_like"
+                />
             <TextView
                 android:id="@+id/profile_No_like"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#aeaeae"
+                android:textSize="12sp"
+                android:text="555"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:text="555"
-                android:textColor="#aeaeae"
-                android:textSize="12sp" />
-
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Like"
                 android:textColor="#aeaeae"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:text="Like"
+                />
+
 
 
             <ImageView
+                android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/time_line_comments" />
-
+                android:src="@drawable/time_line_comments"
+                />
             <TextView
                 android:id="@+id/profile_No_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#aeaeae"
+                android:textSize="12sp"
+                android:text="555"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:text="555"
-                android:textColor="#aeaeae"
-                android:textSize="12sp" />
+                />
 
             <TextView
-                android:id="@+id/post_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Comments"
                 android:textColor="#aeaeae"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:text="Comments"
+                android:id="@+id/post_comment"
+                />
         </LinearLayout>
-
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
             android:layout_gravity="right"
             android:gravity="center|left"
             android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
 
             >
 
@@ -213,26 +208,27 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/time_line_share" />
-
+                android:src="@drawable/time_line_share"
+                />
             <TextView
 
                 android:id="@+id/profile_No_share"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#aeaeae"
+                android:textSize="12sp"
+                android:text="3"
                 android:paddingLeft="4dp"
                 android:paddingRight="4dp"
-                android:text="3"
-                android:textColor="#aeaeae"
-                android:textSize="12sp" />
-
+                />
             <TextView
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Share"
                 android:textColor="#aeaeae"
                 android:textSize="12sp"
+                android:text="Share"
+                android:id="@+id/timline_share"
 
                 />
 

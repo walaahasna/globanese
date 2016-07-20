@@ -58,9 +58,9 @@ public class HorizantalListAdapterforUploadImage extends RecyclerView.Adapter<Ho
                 if (vh.getAdapterPosition() >= 0 && vh.getAdapterPosition() < Images.size())
                     listener.viewSelected(v, vh.getAdapterPosition());
 
-               // Images.remove(vh.getAdapterPosition());
-               // notifyItemRemoved(vh.getAdapterPosition());
-               // notifyItemRangeChanged(vh.getAdapterPosition(), Images.size());
+            //  Images.remove(vh.getAdapterPosition());
+             //   notifyItemRemoved(vh.getAdapterPosition());
+            //  notifyItemRangeChanged(vh.getAdapterPosition(), Images.size());
             }
         });
         return vh;

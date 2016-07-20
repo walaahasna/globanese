@@ -43,16 +43,16 @@ public class EditJobActivity extends BaseActivity {
         currentjob = (EditText) findViewById(R.id.textview_currentjob);
         company = (  EditText) findViewById(R.id.textview_company);
         website = (  EditText) findViewById(R.id.textview_website);
+
+
         con=EditJobActivity.this;
 
-
-
        if(AboutProfileActivity.company!=null)
-           company.setText(AboutProfileActivity.company);
+          company.setText(AboutProfileActivity.postion);
 
 
         if(AboutProfileActivity.postion!=null)
-            currentjob.setText(AboutProfileActivity.postion);
+            currentjob.setText(AboutProfileActivity.company);
 
         if(AboutProfileActivity.website!=null)
             website.setText(AboutProfileActivity.website);
@@ -121,6 +121,7 @@ public class EditJobActivity extends BaseActivity {
         }) {
 
             @Override
+
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
 
@@ -128,7 +129,7 @@ public class EditJobActivity extends BaseActivity {
                 params.put("company", company);
                 params.put("website", website);
                 params.put("position", position);
-
+                params.put("industry_id", "1");
 
                 return params;
             }

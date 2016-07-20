@@ -168,16 +168,19 @@
                             android:layout_height="match_parent"
                             android:background="#e5e5e5"/>
                         <LinearLayout
+
                             android:layout_weight="1"
                             android:gravity="center"
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
+
                             <ImageView
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:src="@drawable/profile_activity_log"
+                                android:id="@+id/timeline_activity"
                                 />
 
                             <TextView
@@ -201,6 +204,7 @@
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
 
                         <ImageView
                             android:layout_width="20dp"

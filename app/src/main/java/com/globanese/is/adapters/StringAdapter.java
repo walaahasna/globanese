@@ -1,7 +1,7 @@
 package com.globanese.is.adapters;
 
 /**
- * Created by 7amdy on 2/9/2014.
+ * Created by walaa on 2/9/2014.
  */
 
 

@@ -1,5 +1,6 @@
 package com.globanese.is.activities;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -40,12 +41,13 @@ import java.util.Map;
 import co.lujun.androidtagview.TagContainerLayout;
 import co.lujun.androidtagview.TagView;
 
-public class EditNationalityActivity  extends BaseActivity  {
-    TextView  done;
+
+public class EditNationalityActivity extends BaseActivity {
+    TextView done;
     TextView edit_language;
     ImageView back;
     AutoCompleteTextView actv;
- NationalityObject a;
+    NationalityObject a;
 
     String token;
     List<NationalityObject> Nationalites;
@@ -53,33 +55,32 @@ public class EditNationalityActivity  extends BaseActivity  {
     LinearLayout search_layout;
     TagContainerLayout mTagContainerLayout;
     List<String> list;
-     Context con;
+    Context con;
     NationalityAdapter adapter;
-    @Override
 
+    @Override
 
 
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         super.onCreate(savedInstanceState);
 
-       setContentView(R.layout.fragment_nationality);
-
+        setContentView(R.layout.fragment_nationality);
 
 
         StaticClass.overrideFonts(this, findViewById(android.R.id.content));
 
-        con=EditNationalityActivity.this;
+        con = EditNationalityActivity.this;
         list = new ArrayList<String>();
-         con=EditNationalityActivity.this;
-        token=getLogInUser().getAccess_token();
-        ListNASH=new ArrayList<>();
-        done=(TextView)findViewById(R.id.done);
-        search_layout =(LinearLayout)findViewById(R.id.Layout_tag);
+        con = EditNationalityActivity.this;
+        token = getLogInUser().getAccess_token();
+        ListNASH = new ArrayList<>();
+        done = (TextView) findViewById(R.id.done);
+        search_layout = (LinearLayout) findViewById(R.id.Layout_tag);
         mTagContainerLayout = (TagContainerLayout) findViewById(R.id.tagcontainerLayout);
 
 
-        back=(ImageView)findViewById(R.id.back);
+        back = (ImageView) findViewById(R.id.back);
         actv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView1);
         actv.setThreshold(1);
 
@@ -89,12 +90,11 @@ public class EditNationalityActivity  extends BaseActivity  {
             @Override
             public void onClick(View v) {
 
-                Intent i=new Intent(EditNationalityActivity.this,AboutProfileActivity.class);
+                Intent i = new Intent(EditNationalityActivity.this, AboutProfileActivity.class);
                 startActivity(i);
 
             }
         });
-
 
 
         done.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +115,7 @@ public class EditNationalityActivity  extends BaseActivity  {
             }
         });
 
-        String url = Project_Web_Functions.BASE_URL+"nationalities?access_token="+token;
+        String url = Project_Web_Functions.BASE_URL + "nationalities?access_token=" + token;
         Log.d(Project_Web_Functions.class.getName(), url);
         VolleyStringRequest stringRequest = new VolleyStringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -123,17 +123,17 @@ public class EditNationalityActivity  extends BaseActivity  {
             public void onResponse(String response) {
                 Log.d(Project_Web_Functions.class.getName(), response.toString());
                 try {
-                    JSONObject result=new JSONObject(response);
-                    if (result.getBoolean("status")==true) {
+                    JSONObject result = new JSONObject(response);
+                    if (result.getBoolean("status") == true) {
 
                         JSONArray items = result.getJSONArray("items");
                         int id = 0;
                         String name = null;
-                        Nationalites=new ArrayList<>();
+                        Nationalites = new ArrayList<>();
 
                         for (int i = 0; i < items.length(); i++) {
                             JSONObject nationality = items.getJSONObject(i);
-                            NationalityObject o=new NationalityObject();
+                            NationalityObject o = new NationalityObject();
                             id = nationality.getInt("id");
                             name = nationality.getString("name");
 
@@ -148,8 +148,8 @@ public class EditNationalityActivity  extends BaseActivity  {
                         Log.d("name", name);
 
                         adapter = new NationalityAdapter
-                                (con , R.layout.fragment_nationality, R.id.list_item, Nationalites);
-                        actv .setAdapter(adapter);
+                                (con, R.layout.fragment_nationality, R.id.list_item, Nationalites);
+                        actv.setAdapter(adapter);
 
                     }
                 } catch (JSONException e) {
@@ -164,7 +164,7 @@ public class EditNationalityActivity  extends BaseActivity  {
                 error.printStackTrace();
 
             }
-        }){
+        }) {
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
@@ -177,9 +177,7 @@ public class EditNationalityActivity  extends BaseActivity  {
         VolleySingleton.getInstance().addToRequestQueue(stringRequest);
 
 
-
         /////////////////////////
-
 
 
         mTagContainerLayout.setOnTagClickListener(new TagView.OnTagClickListener() {
@@ -191,11 +189,10 @@ public class EditNationalityActivity  extends BaseActivity  {
                 Iterator<NationalityObject> i = ListNASH.iterator();
                 while (i.hasNext()) {
                     NationalityObject o = i.next();
-                    if (o.getName().equals(texttag))
-                    {
+                    if (o.getName().equals(texttag)) {
                         //
 
-                       i.remove();
+                        i.remove();
                     }
 
                 }
@@ -229,8 +226,7 @@ public class EditNationalityActivity  extends BaseActivity  {
                 Iterator<NationalityObject> i = ListNASH.iterator();
                 while (i.hasNext()) {
                     NationalityObject o = i.next();
-                    if (o.getName().equals(texttag))
-                    {
+                    if (o.getName().equals(texttag)) {
 
 
                         i.remove();
@@ -248,13 +244,13 @@ public class EditNationalityActivity  extends BaseActivity  {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                  a = (NationalityObject) parent.getAdapter().getItem(position);
+                a = (NationalityObject) parent.getAdapter().getItem(position);
 
-                   String name= a.getName();
-                   int id_nationality =a.getId();
-                    Log.d("id", String.valueOf(id_nationality));
+                String name = a.getName();
+                int id_nationality = a.getId();
+                Log.d("id", String.valueOf(id_nationality));
 
-                    ListNASH.add(a);
+                ListNASH.add(a);
 
 
                 mTagContainerLayout.setVisibility(View.VISIBLE);
@@ -275,12 +271,11 @@ public class EditNationalityActivity  extends BaseActivity  {
         });
 
 
-
     }
 
 
-    public void AddNationslity(final String token,final List<String> Array ) {
-        String url = Project_Web_Functions.BASE_URL+"/user";
+    public void AddNationslity(final String token, final List<String> Array) {
+        String url = Project_Web_Functions.BASE_URL + "/user";
         Log.d(Project_Web_Functions.class.getName(), url);
         VolleyStringRequest stringRequest = new VolleyStringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -288,11 +283,10 @@ public class EditNationalityActivity  extends BaseActivity  {
             public void onResponse(String response) {
                 Log.d(Project_Web_Functions.class.getName(), response.toString());
                 try {
-                    JSONObject result=new JSONObject(response);
-                    Toast.makeText(getApplicationContext(),"Updated Successfully", Toast.LENGTH_SHORT).show();
-                    Intent i=new Intent(con, AboutProfileActivity.class);
+                    JSONObject result = new JSONObject(response);
+                    Toast.makeText(getApplicationContext(), "Updated Successfully", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(con, AboutProfileActivity.class);
                     startActivity(i);
-
 
 
                 } catch (JSONException e) {
@@ -307,23 +301,24 @@ public class EditNationalityActivity  extends BaseActivity  {
                 error.printStackTrace();
 
             }
-        }){
+        }) {
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
 
-                 Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<String, String>();
                 params.put("access_token", token);
-                int i=0;
-                for(String object:Array){
-                 params.put("nationalities["+(i++)+"]", object);
+                int i = 0;
+                for (String object : Array) {
+                    params.put("nationalities[" + (i++) + "]", object);
                 }
 
                 return params;
             }
+
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("X-HTTP-Method-Override","PUT");
+                headers.put("X-HTTP-Method-Override", "PUT");
 
                 return headers;
             }
@@ -334,15 +329,11 @@ public class EditNationalityActivity  extends BaseActivity  {
     }
 
 
-
-
-
-
-    void getUserInfo(String token){
+    void getUserInfo(String token) {
 
 
         showProgressDialog();
-        String url = Project_Web_Functions.BASE_URL+"/user?access_token="+token;
+        String url = Project_Web_Functions.BASE_URL + "/user?access_token=" + token;
         Log.d(Project_Web_Functions.class.getName(), url);
         VolleyStringRequest stringRequest = new VolleyStringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -351,8 +342,8 @@ public class EditNationalityActivity  extends BaseActivity  {
                 dismissProgressDialog();
                 Log.d(Project_Web_Functions.class.getName(), response.toString());
                 try {
-                    JSONObject result=new JSONObject(response);
-                    if (result.getBoolean("status")==true) {
+                    JSONObject result = new JSONObject(response);
+                    if (result.getBoolean("status") == true) {
 
                         JSONObject items = result.getJSONObject("items");
 
@@ -360,8 +351,8 @@ public class EditNationalityActivity  extends BaseActivity  {
                         String nationality = null;
                         for (int ii = 0; ii < nationality_araay.length(); ii++) {
                             nationality = nationality_araay.getJSONObject(ii).getString("name");
-                         String id= nationality_araay.getJSONObject(ii).getString("id");
-                           NationalityObject n=new NationalityObject();
+                            String id = nationality_araay.getJSONObject(ii).getString("id");
+                            NationalityObject n = new NationalityObject();
                             n.setName(nationality);
                             n.setId(Integer.parseInt(id));
 
@@ -393,7 +384,7 @@ public class EditNationalityActivity  extends BaseActivity  {
                 error.printStackTrace();
 
             }
-        }){
+        }) {
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
@@ -403,10 +394,6 @@ public class EditNationalityActivity  extends BaseActivity  {
         };
 
         VolleySingleton.getInstance().addToRequestQueue(stringRequest);
-
-
-
-
 
 
     }

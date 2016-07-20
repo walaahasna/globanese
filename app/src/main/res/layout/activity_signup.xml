@@ -113,7 +113,11 @@
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:textColorHint="@color/edittext_hint_color"
-                android:textSize="@dimen/text_size_normal" />
+                android:textSize="@dimen/text_size_normal"
+                android:textDirection="ltr"
+                android:gravity="left|center_vertical"
+                />
+
 
             <EditText
                 android:id="@+id/password_confirm"
@@ -126,7 +130,10 @@
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:textColorHint="@color/edittext_hint_color"
-                android:textSize="@dimen/text_size_normal" />
+                android:textSize="@dimen/text_size_normal"
+                android:textDirection="ltr"
+                android:gravity="left|center_vertical"
+                />
 
 
             <Button

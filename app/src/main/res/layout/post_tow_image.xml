@@ -78,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="13sp"
-                    android:text="Palestine"
+
                     android:textColor="#adadad"
 
                     />
@@ -147,12 +147,13 @@ android:scaleType="centerCrop"
 
 
     <FrameLayout
-        android:paddingTop="15dp"
+        android:paddingTop="5dp"
         android:paddingBottom="13dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_gravity="left"
             android:gravity="center|left"
@@ -163,6 +164,7 @@ android:scaleType="centerCrop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/time_line_like"
+                android:id="@+id/time_line_like"
                 />
             <TextView
                 android:id="@+id/profile_No_like"
@@ -200,6 +202,7 @@ android:scaleType="centerCrop"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -219,6 +222,8 @@ android:scaleType="centerCrop"
             >
 
             <ImageView
+
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/time_line_share"
@@ -235,11 +240,13 @@ android:scaleType="centerCrop"
                 android:paddingRight="4dp"
                 />
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#aeaeae"
                 android:textSize="12sp"
                 android:text="Share"
+                android:id="@+id/timline_share"
 
                 />
 

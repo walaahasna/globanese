@@ -11,9 +11,56 @@ public class CommentObject implements Parcelable {
 
 
     String name;
-    int image;
+   String image;
      String text;
     String time;
+    String  comment_id;
+    Boolean is_like_user_comment;
+    String like_count;
+
+    public String getCeated_at() {
+        return ceated_at;
+    }
+
+    public void setCeated_at(String ceated_at) {
+        this.ceated_at = ceated_at;
+    }
+
+    String ceated_at;
+
+    public String getLike_count() {
+        return like_count;
+    }
+
+    public void setLike_count(String like_count) {
+        this.like_count = like_count;
+    }
+
+    public Boolean getIs_like_user_comment() {
+        return is_like_user_comment;
+    }
+
+    public void setIs_like_user_comment(Boolean is_like_user_comment) {
+        this.is_like_user_comment = is_like_user_comment;
+    }
+
+    public String getComment_id() {
+
+        return comment_id;
+    }
+
+    public void setComment_id(String comment_id) {
+        this.comment_id = comment_id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     String no_of_like;
 
 
@@ -35,13 +82,7 @@ public class CommentObject implements Parcelable {
         this.name = name;
     }
 
-    public int getImage() {
-        return image;
-    }
 
-    public void setImage(int image) {
-        this.image = image;
-    }
 
     public String getTime() {
         return time;
@@ -69,7 +110,7 @@ public class CommentObject implements Parcelable {
 
     protected CommentObject(Parcel in) {
         name = in.readString();
-        image = in.readInt();
+
         text = in.readString();
         time = in.readString();
         no_of_like = in.readString();
@@ -78,7 +119,7 @@ public class CommentObject implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
-        dest.writeInt(image);
+
         dest.writeString(text);
         dest.writeString(time);
         dest.writeString(no_of_like);

@@ -83,6 +83,8 @@
                     android:paddingRight="15dp"
                     android:inputType="textPassword"
                     android:textSize="@dimen/text_size_normal"
+                    android:textDirection="ltr"
+                    android:gravity="left|center_vertical"
                     />
                 <TextView
 

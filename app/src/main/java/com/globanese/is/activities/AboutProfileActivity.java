@@ -95,7 +95,8 @@ public class AboutProfileActivity extends BaseActivity {
 
             @Override
             public void onClick(View v) {
-                finish();
+                Intent i = new Intent(AboutProfileActivity.this,ProfileActivity.class);
+                startActivity(i);
             }
         });
         ///////////////////////////////////////////
@@ -230,6 +231,7 @@ public class AboutProfileActivity extends BaseActivity {
                             textview_dob.setText(dob);
 
                         }
+
 
                         JSONArray phone_araay = items.getJSONArray("user_phone");
                         final int phone_length = phone_araay.length();

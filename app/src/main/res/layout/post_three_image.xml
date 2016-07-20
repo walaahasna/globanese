@@ -3,82 +3,84 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <LinearLayout
-        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center|left"
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:padding="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profile_image"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/profile"
-            app:civ_border_width="0dp"
-            app:civ_border_color="#ffffff"/>
+            app:civ_border_color="#ffffff"
+            app:civ_border_width="0dp" />
+
         <LinearLayout
-            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:gravity="center|left"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:orientation="vertical">
+
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                >
+                android:layout_marginBottom="2dp">
+
                 <TextView
                     android:id="@+id/profile_name"
-                    android:layout_gravity="left"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="13sp"
+                    android:layout_gravity="left"
                     android:text="USERNAME"
-
                     android:textColor="#343537"
-                    />
+
+                    android:textSize="13sp" />
+
                 <ImageView
                     android:id="@+id/post_remove"
-                    android:layout_gravity="right|center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="right|center"
+                    android:padding="10dp"
                     android:src="@drawable/profile_options_icon"
-                    android:tint="#d4d4d4"
-                    />
+                    android:tint="#d4d4d4" />
             </FrameLayout>
 
 
             <LinearLayout
-                android:layout_marginTop="2dp"
-                android:gravity="center|left"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center|left">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/profile_time_icon"
                     android:layout_marginRight="5dp"
-                    />
+                    android:src="@drawable/profile_time_icon" />
+
                 <TextView
+                    android:id="@+id/profile_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="13sp"
-                    android:text="2h"
-                    android:id="@+id/profile_time"
-                    android:textColor="#adadad"
                     android:paddingRight="12dp"
-                    />
+                    android:text="2h"
+                    android:textColor="#adadad"
+                    android:textSize="13sp" />
+
+
                 <TextView
                     android:id="@+id/profile_country"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="13sp"
-                    android:text="Palestine"
                     android:textColor="#adadad"
+                    android:textSize="13sp"
 
                     />
             </LinearLayout>
@@ -89,16 +91,15 @@
     <TextView
 
         android:id="@+id/profile_text"
-        android:padding="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="13sp"
+        android:padding="10dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="Follow along with using jhy. Don't forget to use the filters to find the best Tweets first. "
         android:textColor="#686868"
 
-        android:text="Follow along with using jhy. Don't forget to use the filters to find the best Tweets first. "        />
-
+        android:textSize="13sp" />
 
 
     <LinearLayout
@@ -114,13 +115,12 @@
             android:layout_weight="1">
 
             <ImageView
-                android:layout_marginRight="0.5dp"
+                android:id="@+id/profile_one_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/t1"
+                android:layout_marginRight="0.5dp"
                 android:scaleType="centerCrop"
-                android:id="@+id/profile_one_image"
-                />
+                android:src="@drawable/t1" />
         </LinearLayout>
 
 
@@ -135,70 +135,46 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:background="#fff000" >
+                android:background="#fff000">
+
                 <ImageView
+                    android:id="@+id/profile_tow_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/t2"
                     android:scaleType="centerCrop"
-                    android:id="@+id/profile_tow_image"
-                    />
+                    android:src="@drawable/t2" />
             </LinearLayout>
 
             <RelativeLayout
-                android:layout_marginTop="0.5dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginTop="0.5dp"
                 android:layout_weight="1"
-                android:background="@drawable/t1" >
+                android:background="@drawable/t1">
 
                 <ImageView
 
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/t1"
-                    android:scaleType="centerCrop"
-
-                    />
-
-                <ImageView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="#6c000000"
-                    android:scaleType="centerCrop"
                     android:id="@+id/profile_three_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/t1" />
 
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:text="+ 3"
-                    android:textSize="25dp"
-                    android:textColor="#fff"
-                    android:padding="5dp"
-                   android:id="@+id/more_than_three_icon"
 
-                    />
-                </RelativeLayout>
+            </RelativeLayout>
 
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
-
-
-
-
 
 
     <FrameLayout
-        android:paddingTop="15dp"
+        android:paddingTop="5dp"
         android:paddingBottom="13dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_gravity="left"
             android:gravity="center|left"
@@ -209,6 +185,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/time_line_like"
+                android:id="@+id/time_line_like"
                 />
             <TextView
                 android:id="@+id/profile_No_like"
@@ -246,6 +223,7 @@
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -283,11 +261,13 @@
                 android:paddingRight="4dp"
                 />
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#aeaeae"
                 android:textSize="12sp"
                 android:text="Share"
+                android:id="@+id/timline_share"
 
                 />
 
@@ -295,11 +275,11 @@
 
 
     </FrameLayout>
+
     <View
-        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="#e9ebee"
-        />
+        android:layout_marginTop="5dp"
+        android:background="#e9ebee" />
 
-    </LinearLayout>
+</LinearLayout>

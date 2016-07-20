@@ -30,6 +30,11 @@ public class LocationActivity extends AppCompatActivity {
         actv.setAdapter(new PlacesAutoCompleteAdapter(getApplicationContext(), R.layout.autocomplete_list_item));
         actv.setThreshold(1);
 
+        if(WritePostActivity.location!=null){
+
+            actv.setText(WritePostActivity.location);
+        }
+
 
 
 
@@ -41,7 +46,6 @@ public class LocationActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
               description = (String) parent.getItemAtPosition(position);
-                Toast.makeText(getApplicationContext(),description,Toast.LENGTH_SHORT).show();
 
             }
         });

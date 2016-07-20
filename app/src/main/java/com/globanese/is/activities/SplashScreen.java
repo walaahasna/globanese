@@ -36,19 +36,19 @@ public class SplashScreen extends BaseActivity {
 
 
 
-
         new CountDownTimer(3000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
             }
 
+
             @Override
             public void onFinish() {
                 if(getLogInUser()==null) {
                     startActivity(new Intent(con,LoginActivity.class));
                 }else{
-                    startActivity(new Intent(con, HomeActivity.class));
+                    startActivity(new Intent(con, TimeLineActivity.class));
                 }
                 finish();
             }

@@ -159,6 +159,7 @@ public class SignUpCompleteActivity extends BaseActivity {
                     }
                 });
 
+
                 View sheet_cancel = view.findViewById(R.id.sheet_cancel);
                 View sheet_ok = view.findViewById(R.id.sheet_ok);
 
@@ -582,7 +583,7 @@ public class SignUpCompleteActivity extends BaseActivity {
 
 
                     Toast.makeText(SignUpCompleteActivity.this, "Profile Updated Successfully", Toast.LENGTH_LONG).show();
-                    Intent i = new Intent(SignUpCompleteActivity.this, HomeActivity.class);
+                    Intent i = new Intent(SignUpCompleteActivity.this, TimeLineActivity.class);
                     startActivity(i);
                     finish();
                 } else {

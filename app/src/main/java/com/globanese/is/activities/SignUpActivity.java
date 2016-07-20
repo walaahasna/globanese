@@ -279,7 +279,7 @@ public class SignUpActivity extends BaseActivity {
                             user.setRefresh_token(items.get("refresh_token"));
                             saveLogInUser(user);
 
-                            startActivity(new Intent(SignUpActivity.this,HomeActivity.class));
+                            startActivity(new Intent(SignUpActivity.this,TimeLineActivity.class));
                             finish();
                             if(LoginActivity.instance!=null){
                                 LoginActivity.instance.finish();

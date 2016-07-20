@@ -13,19 +13,103 @@ import io.realm.annotations.PrimaryKey;
  */
 public class PostObject  {
 
+
+
+    private  String name;
+
+    private int id;
+    private int posttype;
     private String text;
     private String video;
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     private String user_share_from;
     private String getCreated_at;
     private String location;
     private String created_at;
     private String updated_at;
-    private String photo1;
-    private int privacy;
-    private int album_id;
+    private String photo;
+
+    public void setPost_id(String post_id) {
+        this.post_id = post_id;
+    }
+
     private int user_id;
     private int group_id;
-     private int post_id;
+    private String post_id;
+    private  int photocount;
+    private int privacy;
+    private int album_id;
+    private int event_type_id;
+    String type;
+    private ArrayList<AddFriendObject> friends=new ArrayList<>();
+    private ArrayList<String> photo_araay=new ArrayList<>();
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+
+    public ArrayList<String> getPhoto_araay() {
+        return photo_araay;
+    }
+
+    public void setPhoto_araay(ArrayList<String> photo_araay) {
+        this.photo_araay = photo_araay;
+    }
+
+    public int getPhotocount() {
+        return photocount;
+    }
+
+    public void setPhotocount(int photocount) {
+        this.photocount = photocount;
+    }
+
+
+
+
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+
+    public int getEvent_type_id() {
+        return event_type_id;
+    }
+
+    public void setEvent_type_id(int event_type_id) {
+        this.event_type_id = event_type_id;
+    }
+
+    public int getRecord_type_id() {
+        return record_type_id;
+    }
+
+    public void setRecord_type_id(int record_type_id) {
+        this.record_type_id = record_type_id;
+    }
+
+    private int record_type_id ;
+
+
 
     public ArrayList<AddFriendObject> getFriends() {
         return friends;
@@ -35,10 +119,9 @@ public class PostObject  {
         this.friends = friends;
     }
 
-    @PrimaryKey
-    private int id;
-    private int posttype;
-    private ArrayList<AddFriendObject> friends=new ArrayList<>();
+
+
+
 
     public String getUpdated_at() {
         return updated_at;
@@ -104,13 +187,7 @@ public class PostObject  {
         this.privacy = privacy;
     }
 
-    public String getPhoto1() {
-        return photo1;
-    }
 
-    public void setPhoto1(String photo1) {
-        this.photo1 = photo1;
-    }
 
     public int getAlbum_id() {
         return album_id;
@@ -136,13 +213,7 @@ public class PostObject  {
         this.user_id = user_id;
     }
 
-    public int getPost_id() {
-        return post_id;
-    }
 
-    public void setPost_id(int post_id) {
-        this.post_id = post_id;
-    }
 
     public int getId() {
         return id;

@@ -134,7 +134,7 @@ public class LoginActivity extends BaseActivity implements
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                startActivity(new Intent(LoginActivity.this,TimeLineActivity.class));
                 finish();
 //                if(SignUpActivity.instance!=null){
 //                    SignUpActivity.instance.finish();
@@ -414,7 +414,7 @@ public class LoginActivity extends BaseActivity implements
                             user.setRefresh_token(items.get("refresh_token"));
                             saveLogInUser(user);
 
-                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                            startActivity(new Intent(LoginActivity.this, TimeLineActivity.class));
                             finish();
                             if (SignUpActivity.instance != null) {
                                 SignUpActivity.instance.finish();
@@ -460,7 +460,7 @@ public class LoginActivity extends BaseActivity implements
                     saveLogInUser(user);
 
 
-                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    startActivity(new Intent(LoginActivity.this, TimeLineActivity.class));
                     finish();
                      if (SignUpActivity.instance != null) {
                         SignUpActivity.instance.finish();
@@ -501,7 +501,7 @@ public class LoginActivity extends BaseActivity implements
                     user.setRefresh_token(items.get("refresh_token"));
                     saveLogInUser(user);
 
-                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    startActivity(new Intent(LoginActivity.this, TimeLineActivity.class));
                     finish();
                     if (SignUpActivity.instance != null) {
                         SignUpActivity.instance.finish();
@@ -542,7 +542,7 @@ public class LoginActivity extends BaseActivity implements
                     user.setRefresh_token(items.get("refresh_token"));
                     saveLogInUser(user);
 
-                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    startActivity(new Intent(LoginActivity.this, TimeLineActivity.class));
                     finish();
                     if (SignUpActivity.instance != null) {
                         SignUpActivity.instance.finish();

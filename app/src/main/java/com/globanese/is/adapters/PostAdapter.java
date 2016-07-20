@@ -2,13 +2,13 @@ package com.globanese.is.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,16 +16,11 @@ import android.widget.VideoView;
 
 import com.globanese.is.R;
 import com.globanese.is.activities.CommentActivity;
-import com.globanese.is.activities.EditDobActivity;
 import com.globanese.is.activities.EditJobActivity;
 import com.globanese.is.activities.Main2Activity;
-import com.globanese.is.activities.ProfileActivity;
 import com.globanese.is.model.AddFriendObject;
 import com.globanese.is.model.PostObject;
-import com.globanese.is.network.Project_Web_Functions;
-import com.kennyc.bottomsheet.BottomSheet;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -73,6 +68,7 @@ public class PostAdapter extends BaseAdapter {
         if (s.getPosttype() == 0) {
 
 
+
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.post_text, parent, false);
 
@@ -83,7 +79,7 @@ public class PostAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), Main2Activity.class);
-                    intent.putExtra("post_id", s.getPost_id());
+                    //intent.putExtra("post_id", s.getPost_id());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     v.getContext().startActivity(intent);
 
@@ -95,7 +91,7 @@ public class PostAdapter extends BaseAdapter {
 
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), CommentActivity.class);
-                    intent.putExtra("post_id", s.getPost_id());
+                   // intent.putExtra("post_id", s.getPost_id());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     v.getContext().startActivity(intent);
 
@@ -120,7 +116,7 @@ public class PostAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), Main2Activity.class);
-                    intent.putExtra("post_id", s.getPost_id());
+                   // intent.putExtra("post_id", s.getPost_id());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     v.getContext().startActivity(intent);
 
@@ -149,7 +145,7 @@ public class PostAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), Main2Activity.class);
-                    intent.putExtra("post_id", s.getPost_id());
+                    //intent.putExtra("post_id", s.getPost_id());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     v.getContext().startActivity(intent);
 
@@ -174,16 +170,15 @@ public class PostAdapter extends BaseAdapter {
         else if (s.getPosttype() == 3) {
             Log.e("here 3 ", 3 + "");
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.post_three_image, parent, false);
+            convertView = inflater.inflate(R.layout.post_three_image_extra, parent, false);
             edit = (ImageView) convertView.findViewById(R.id.post_remove);
             edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), Main2Activity.class);
-                    intent.putExtra("post_id", s.getPost_id());
+                   // intent.putExtra("post_id", s.getPost_id());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     v.getContext().startActivity(intent);
-
 
                 }
             });
@@ -193,15 +188,15 @@ public class PostAdapter extends BaseAdapter {
             mViewHolder.profile_name.setText("Craig Lopez");
             mViewHolder.profile_time.setText("2h");
             mViewHolder.profile_text.setText("Follow along with using jhy. Don't forget to use the filters to find the best Tweets first. ");
-            //  mViewHolder.profile_one_image.setImageResource(s.getId());
-            //  mViewHolder.profile_tow_image.setImageResource(s.getId());
-            //  mViewHolder.profile_three_image.setImageResource(s.getId());
+
 
         }
 
 
 ////////////////////////////////////// post_video=4
+
         else if (s.getPosttype() == 4) {
+
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.post_video, parent, false);
             edit = (ImageView) convertView.findViewById(R.id.post_remove);
@@ -210,7 +205,7 @@ public class PostAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), Main2Activity.class);
-                    intent.putExtra("post_id", s.getPost_id());
+                  //  intent.putExtra("post_id", s.getPost_id());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     v.getContext().startActivity(intent);
 
@@ -274,6 +269,8 @@ public class PostAdapter extends BaseAdapter {
 
             if (type == 0) {
 
+
+
                 profile_image = (CircleImageView) item.findViewById(R.id.profile_image);
                 profile_name = (TextView) item.findViewById(R.id.profile_name);
                 profile_time = (TextView) item.findViewById(R.id.profile_time);
@@ -283,10 +280,10 @@ public class PostAdapter extends BaseAdapter {
                 profile_No_comment = (TextView) item.findViewById(R.id.profile_No_comment);
                 profile_No_share = (TextView) item.findViewById(R.id.profile_No_share);
 
-
             }
 
 ///////////////////////////type post_one_image
+
 
             else if (type == 1) {
                 profile_name = (TextView) item.findViewById(R.id.profile_name);
@@ -299,7 +296,11 @@ public class PostAdapter extends BaseAdapter {
                 profile_No_share = (TextView) item.findViewById(R.id.profile_No_share);
             }
 
+
             //////////////////////////////post_tow_image
+
+
+
 
             else if (type == 2) {
                 profile_name = (TextView) item.findViewById(R.id.profile_name);
@@ -312,10 +313,12 @@ public class PostAdapter extends BaseAdapter {
                 profile_No_comment = (TextView) item.findViewById(R.id.profile_No_comment);
                 profile_No_share = (TextView) item.findViewById(R.id.profile_No_share);
             }
-//////////////////////////post_three_image
+//////////////////////////post_three_image_extra
 
             else if (type == 3) {
                 Log.d("here 3 ", 33 + "");
+
+
 
                 profile_name = (TextView) item.findViewById(R.id.profile_name);
                 profile_time = (TextView) item.findViewById(R.id.profile_time);
@@ -329,16 +332,19 @@ public class PostAdapter extends BaseAdapter {
                 profile_No_share = (TextView) item.findViewById(R.id.profile_No_share);
             }
 /////////////////////////////////////////////////Post_viedo
-            else if (type == 4) {
+
+
+              else if (type == 4) {
                 profile_name = (TextView) item.findViewById(R.id.profile_name);
                 profile_time = (TextView) item.findViewById(R.id.profile_time);
                 profile_counntry = (TextView) item.findViewById(R.id.profile_country);
                 profile_text = (TextView) item.findViewById(R.id.profile_text);
-                profile_viedo = (VideoView) item.findViewById(R.id.profile_video);
+               // profile_viedo = (VideoView) item.findViewById(R.id.profile_video);
                 profile_No_like = (TextView) item.findViewById(R.id.profile_No_like);
                 profile_No_comment = (TextView) item.findViewById(R.id.profile_No_comment);
                 profile_No_share = (TextView) item.findViewById(R.id.profile_No_share);
             }
+
 
             /////////////////////////////////////////////////Post_addfriend
             else if (type == 5) {

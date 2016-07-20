@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,28 +54,27 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import io.realm.Realm;
 
 public class WritePostActivity extends BaseActivity {
-
-
-
+    Boolean endofarray;
     ImageButton send_post;
     RequestClass req;
     byte[] image;
     String text;
-    TextView  profile_name;
-    ImageButton upload_photo, upload_video, upload_location, cancel;
+    TextView profile_name;
+    ImageButton upload_photo, upload_video, upload_location;
+    ImageView cancel;
     AlertDialog choosePicDialog;
     int REQUEST_IMAGE_CAPTURE = 333;
     int REQUEST_IMAGE_GALLERY = 100;
     Bitmap resultImage;
     public static List<ImageObject> List_photos;
-    String location;
+    public static String location;
     HorizantalListAdapterforUploadImage b;
     ImageObject o;
     RecyclerView rv;
-    LinearLayout layout_video, layout_image, layout_camera, layout_video2;
-
+    LinearLayout layout_video, layout_image, layout_camera, layout_video2, layout_location;
+    TextView locationn;
     Map<String, String> map;
-    Boolean showimage, showvideo,sendpost = false;
+    Boolean showimage, showvideo, sendpost = false;
 
     EditText video_link, profile_text;
     List<byte[]> Array_photo;
@@ -89,15 +89,15 @@ public class WritePostActivity extends BaseActivity {
         setContentView(R.layout.activity_write_post);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         StaticClass.overrideFonts(this, findViewById(android.R.id.content));
+
         map = new HashMap<>();
         req = new RequestClass();
         List_photos = new ArrayList<>();
 
-       showvideo=false;
-        showimage=false;
-        sendpost=false;
-        Intent i = getIntent();
-        location = i.getStringExtra("loaction");
+        showvideo = false;
+        showimage = false;
+        sendpost = false;
+        endofarray = false;
 
 
         Array_photo = new ArrayList<>();
@@ -114,8 +114,8 @@ public class WritePostActivity extends BaseActivity {
         rv.setLayoutManager(manager);
         b = new HorizantalListAdapterforUploadImage(getApplicationContext(), List_photos);
         b.notifyDataSetChanged();
-        rv.setAdapter(b);
 
+        rv.setAdapter(b);
 
         b.setRecyclerViewListener(new HorizantalListAdapterforUploadImage.MyRecyclerViewListener() {
             @Override
@@ -131,21 +131,30 @@ public class WritePostActivity extends BaseActivity {
         });
 
 
-
         token = getLogInUser().getAccess_token();
-        profile_name= (TextView)findViewById(R.id.profile_name);
+        profile_name = (TextView) findViewById(R.id.profile_name);
+        locationn = (TextView) findViewById(R.id.location);
+        TextView in = (TextView) findViewById(R.id.in);
         video_link = (EditText) findViewById(R.id.video_link);
         profile_text = (EditText) findViewById(R.id.profile_text);
         layout_video = (LinearLayout) findViewById(R.id.layout_video);
         layout_image = (LinearLayout) findViewById(R.id.layout_image);
         layout_camera = (LinearLayout) findViewById(R.id.layout_camera);
         layout_video2 = (LinearLayout) findViewById(R.id.layout_video2);
+        layout_location = (LinearLayout) findViewById(R.id.layout_location);
         upload_location = (ImageButton) findViewById(R.id.writepost_upload_loaction);
         send_post = (ImageButton) findViewById(R.id.send_post);
-        cancel = (ImageButton) findViewById(R.id.back);
+        cancel = (ImageView) findViewById(R.id.closee);
+
+        Intent i = getIntent();
+        location = i.getStringExtra("loaction");
 
 
-
+        if (location != null) {
+            in.setVisibility(View.VISIBLE);
+            locationn.setVisibility(View.VISIBLE);
+            locationn.setText(location);
+        }
 
 ///////////////////////////////////////////////////////////////////////////user _information
 
@@ -153,23 +162,24 @@ public class WritePostActivity extends BaseActivity {
 
         BaseActivity b = new BaseActivity();
         UserObject user = b.getUserObject();
-        String imge_url=b.getprofilephoto();
+        String imge_url = b.getprofilephoto();
+
 
         if (imge_url != null)
 
         {
             Picasso.with(WritePostActivity.this).load(imge_url).into(cimage);
-            Log.d("photo",imge_url);
+            Log.d("photo", imge_url);
         } else {
 
             cimage.setImageResource(R.drawable.user_image_placeholder);
-       }
+        }
 
 
+////////////////////////////////////////////////////////////////////////////////////
+        if (user.getFname() != null && user.getLname() != null)
 
-        if (user.getFname() != null&&user.getLname() != null)
-
-        profile_name.setText(user.getFname()+""+user.getLname());
+            profile_name.setText(user.getFname() + "" + user.getLname());
 
 
         if (user.getFname() != null)
@@ -177,10 +187,7 @@ public class WritePostActivity extends BaseActivity {
             profile_name.setText(user.getFname());
 
 
-
-
-
-        upload_location.setOnClickListener(new View.OnClickListener() {
+        layout_location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(WritePostActivity.this, LocationActivity.class);
@@ -202,12 +209,13 @@ public class WritePostActivity extends BaseActivity {
 
         initPictureDialog();
 
+
         layout_video2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                video_link.requestFocus();
                 Array_photo_id.clear();
                 Array_photo.clear();
-
                 layout_video.setVisibility(View.VISIBLE);
                 layout_image.setVisibility(View.GONE);
                 showvideo = true;
@@ -226,62 +234,63 @@ public class WritePostActivity extends BaseActivity {
         });
 
 
+
         send_post.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View v) {
-            text = profile_text.getText().toString();
-
-            boolean status= checkvalidate();
-             if(status==true){
+                showProgressDialog();
+                text = profile_text.getText().toString();
 
 
-                if (Array_photo.size() > 0) {
-                    for (int i = 0; i < Array_photo.size(); i++) {
-                        upload_image(token, Array_photo.get(i));
+                boolean status = checkvalidate();
+                if (status == true) {
+
+                    if (Array_photo.size() > 0) {
+                        boolean sendPostRequest = false;
+                        Log.d("Array_photo.size()", String.valueOf(Array_photo.size()));
+                        for (int i = 0; i < Array_photo.size(); i++) {
+                            if (i == Array_photo.size()) {
+                                sendPostRequest = true;
+                            } else {
+                                sendPostRequest = false;
+                            }
+
+                            upload_image(token, Array_photo.get(i), sendPostRequest);
+
+                        }
+
+
+                    } else {
+
+
+                        map.put("privacy", "1");
+
+                        if (profile_text.getText().toString() != null)
+                            Log.d("text", text);
+                        map.put("text", text);
+
+
+                        if (location != null && !location.isEmpty()) {
+                            map.put("location", location);
+                            Log.d("location", location);
+                        }
+                        Log.d("boolean", showvideo.toString());
+
+                        if (showvideo == true) {
+                            map.put("video", video_link.getText().toString());
+                        }
+
+
+                        Send_Post(token, map);
                     }
+
+
+                } else {
+
+                    Toast.makeText(getApplicationContext(), "Enter Text or video link or Photo to make Post", Toast.LENGTH_SHORT).show();
+
                 }
-
-                else {
-
-
-                    map.put("privacy", "1");
-
-                    if (profile_text.getText().toString() != null)
-                        Log.d("text", text);
-                    map.put("text", text);
-
-
-                    if (location != null && !location.isEmpty()) {
-                        map.put("location", location);
-                        Log.d("location", location);
-                    }
-                    Log.d("boolean",showvideo.toString());
-
-                    if (showvideo == true) {
-                        map.put("video", video_link.getText().toString());
-                    }
-
-
-                    Send_Post(token, map);
-                }
-
-
-
-             }
-                else{
-
-                 Toast.makeText(getApplicationContext(),"Enter Text or video link or Photo to make Post",Toast.LENGTH_SHORT).show();
-
-
-
-
-
-             }
-
-
-
-
 
 
             }
@@ -289,34 +298,34 @@ public class WritePostActivity extends BaseActivity {
 
     }
 
+
     private boolean checkvalidate() {
 
-        if( profile_text.getText().toString()!=null|(showvideo==true&&video_link.getText().toString()!=null)|(showimage==true &&Array_photo.size() > 0)){
+        if (profile_text.getText().toString() != null | (showvideo == true && video_link.getText().toString() != null) | (showimage == true && Array_photo.size() > 0)) {
 
-            sendpost=true;
+            sendpost = true;
 
 
         }
         return sendpost;
 
 
-
     }
-
 
 
     public void initPictureDialog() {
 
         AlertDialog.Builder choosePic = new AlertDialog.Builder(this);
 
-        final View view = ((LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(R.layout.photo_dialog, null);
+        final View view = ((LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(R.layout.photo_dialog_2, null);
         StaticClass.overrideFonts(this, view);
 
 
-        LinearLayout gallery = (LinearLayout) view.findViewById(R.id.choose_pic_gallery);
-        LinearLayout camera = (LinearLayout) view.findViewById(R.id.choose_pic_camera);
+        //  LinearLayout gallery = (LinearLayout) view.findViewById(R.id.choose_pic_gallery);
+        //  LinearLayout camera = (LinearLayout) view.findViewById(R.id.choose_pic_camera);
 
-
+        TextView gallery = (TextView) view.findViewById(R.id.choose_pic_gallery);
+        TextView camera = (TextView) view.findViewById(R.id.choose_pic_camera);
         gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -423,9 +432,11 @@ public class WritePostActivity extends BaseActivity {
         return byteArray;
     }
 
-    public void upload_image(final String token, final byte[] image) {
+    public void upload_image(final String token, final byte[] image, final boolean sendPostRequest) {
         showProgressDialog();
-        String url =   Project_Web_Functions.BASE_URL+"/image";
+        Log.d("image", image.length + "");
+
+        String url = Project_Web_Functions.BASE_URL + "/image";
         VolleyMultipartRequest multipartRequest =
                 new VolleyMultipartRequest(Request.Method.POST, url, new Response.Listener<JSONObject>() {
                     public void onResponse(JSONObject response) {
@@ -448,7 +459,13 @@ public class WritePostActivity extends BaseActivity {
                                 Log.d("image_url", imgeurl);
 
                                 Array_photo_id.add(image_id);
-                                MakePostReqest(Array_photo_id);
+                                Log.d("Array_photo_id", Array_photo_id.size() + ": k");
+
+
+                                if (sendPostRequest == true) {
+                                    MakePostReqest(Array_photo_id);
+
+                                }
 
 
                             } else {
@@ -501,13 +518,14 @@ public class WritePostActivity extends BaseActivity {
             map.put("location", location);
             Log.d("location", location);
         }
+        Log.d("arraypost", array.size() + "");
 
 
         if (showimage == true) {
             int i = 0;
             for (String object : array) {
+                Log.d("photojj", object + " " + i);
                 map.put("photo_ids[" + (i++) + "]", object);
-                Log.d("photo", object);
             }
 
         }
@@ -522,13 +540,9 @@ public class WritePostActivity extends BaseActivity {
     }
 
 
-
-
-
-
     public void Send_Post(final String token, final Map<String, String> map) {
 
-        String url =    Project_Web_Functions.BASE_URL+"/post";
+        String url = Project_Web_Functions.BASE_URL + "/post";
         Log.d(Project_Web_Functions.class.getName(), url);
         VolleyStringRequest stringRequest = new VolleyStringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -540,13 +554,13 @@ public class WritePostActivity extends BaseActivity {
                     if (result.getBoolean("status") == (true)) {
                         dismissProgressDialog();
                         Toast.makeText(getApplicationContext(), "Post Successfully ", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(WritePostActivity.this, ProfileActivity.class);
+                        Intent i = new Intent(WritePostActivity.this, TimeLineActivity.class);
                         startActivity(i);
 
-                    }
-                    else{
-                  Toast.makeText(getApplicationContext(), "error ", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "error ", Toast.LENGTH_SHORT).show();
 
+                        dismissProgressDialog();
 
                     }
                 } catch (JSONException e) {
@@ -579,13 +593,7 @@ public class WritePostActivity extends BaseActivity {
         VolleySingleton.getInstance().addToRequestQueue(stringRequest);
 
 
-
-
-
     }
-
-
-
 
 
 }

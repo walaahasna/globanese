@@ -141,12 +141,11 @@ public class BaseActivity extends AppCompatActivity {
 
         return o;
     }
-    public String getprofilephoto() {
+   public String getprofilephoto() {
 
         UserObject user = getUserObject();
-
         String imge_url = null;
-        if (user.getPhoto() != null) {
+        if (user.getPhoto()!= null) {
 
             imge_url = "http://globanese.info/beta/uploads/users/"+ user.getId() + "/profile_" + user.getPhoto();
             Log.d("photo", imge_url);
