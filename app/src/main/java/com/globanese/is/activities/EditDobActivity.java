@@ -68,14 +68,8 @@ TextView edit_dob;
         if(AboutProfileActivity.dob!=null)
             edit_dob.setText(AboutProfileActivity.dob);
 
-
         if(AboutProfileActivity.country_dob!=null)
         actv.setText(AboutProfileActivity.country_dob);
-
-
-
-
-
 
 
 

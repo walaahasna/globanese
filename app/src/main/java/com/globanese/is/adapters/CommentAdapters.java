@@ -32,11 +32,10 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+
 public class CommentAdapters  extends BaseAdapter {
 
-
     public static List<CommentObject> Comments;
-
     public static Context context;
 
     public CommentAdapters (Context context, List<CommentObject> Comments) {
@@ -76,14 +75,12 @@ public class CommentAdapters  extends BaseAdapter {
                 mViewHolder.profile_name.setText(s.getName());
                 mViewHolder.profile_time.setText(s.getCeated_at());
                 mViewHolder.profile_text.setText(s.getText());
-                mViewHolder.profile_No_like.setText(s.getLike_count());
+                mViewHolder.profile_No_like.setText("("+s.getLike_count()+")");
                 Picasso.with(context).load(s.getImage()).into( mViewHolder.profile_image);
 
 
         if(s.getIs_like_user_comment()==true)
             mViewHolder.comment_button.setTextColor(context.getResources().getColor(R.color.colorPrimary));
-
-
 
         mViewHolder.comment_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,11 +89,9 @@ public class CommentAdapters  extends BaseAdapter {
                 BaseActivity b=new BaseActivity();
               String  token= b.getLogInUser().getAccess_token();
                 Create_like(token,s.getComment_id());
-               int like_num= Integer.parseInt(mViewHolder.profile_No_like.getText().toString());
+               int like_num= Integer.parseInt(s.getLike_count().toString());
                 String like= String.valueOf(like_num+1);
-
-
-                mViewHolder.profile_No_like.setText(like);
+                mViewHolder.profile_No_like.setText("("+like+")");
 
             }
         });
@@ -120,13 +115,13 @@ public class CommentAdapters  extends BaseAdapter {
                 profile_text= (TextView)item.findViewById(R.id.profile_text);
                 profile_No_like= (TextView)item.findViewById(R.id.profile_No_like);
                comment_button= (TextView)item.findViewById(R.id.comment_button);
+
         }
     }
 
     private void Create_like(final String token, final String comment_id) {
         Log.d("token", token);
         Log.d("token", comment_id);
-
 
         String url = Project_Web_Functions.BASE_URL + "/reaction";
         Log.d(Project_Web_Functions.class.getName(), url);

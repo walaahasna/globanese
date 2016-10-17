@@ -85,7 +85,9 @@ public class CommunityAdapterForAutocompltet extends ArrayAdapter<CommunityObjec
             } else {
                 return new FilterResults();
             }
+
         }
+
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {

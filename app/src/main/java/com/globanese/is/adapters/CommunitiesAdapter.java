@@ -1,7 +1,7 @@
 package com.globanese.is.adapters;
 
 /**
- * Created by 7amdy on 2/9/2014.
+ * Created by walaa on 27/6/2016.
  */
 
 
@@ -22,7 +22,7 @@ public class CommunitiesAdapter extends ArrayAdapter<CommunityObject> {
     private Context context;
     ArrayList<CommunityObject> items;
     int resource;
-    private int selected_index=-1;
+    private int selected_index = -1;
 
     public CommunitiesAdapter(Context context, int resource, ArrayList<CommunityObject> items) {
         super(context, resource, items);
@@ -44,16 +44,20 @@ public class CommunitiesAdapter extends ArrayAdapter<CommunityObject> {
         TextView textView = (TextView) convertView.findViewById(R.id.text);
         textView.setText(items.get(position).getName());
 
-        if(selected_index==position){
+        if (selected_index == position) {
             textView.setTextColor(context.getResources().getColor(R.color.colorPrimary));
-        }else{
+        } else
+
+        {
+
             textView.setTextColor(context.getResources().getColor(R.color.text_gray));
+
+
         }
 
         return convertView;
 
     }
-
 
     @Override
     public int getCount() {

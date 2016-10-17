@@ -3,13 +3,15 @@ package com.globanese.is.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import io.realm.RealmObject;
+
 /**
  * Created by Hamdy on 19/5/2016.
  */
-public class CommunityObject implements Parcelable {
+public class CommunityObject  extends RealmObject implements Parcelable {
     private int id;
     private String country;
-    private String city;
+
 
     public int getId() {
         return id;
@@ -27,13 +29,7 @@ public class CommunityObject implements Parcelable {
         this.country = country;
     }
 
-    public String getCity() {
-        return city;
-    }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
 
 
     public String getName(){
@@ -49,7 +45,7 @@ public class CommunityObject implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.id);
         dest.writeString(this.country);
-        dest.writeString(this.city);
+
     }
 
     public CommunityObject() {
@@ -58,7 +54,7 @@ public class CommunityObject implements Parcelable {
     protected CommunityObject(Parcel in) {
         this.id = in.readInt();
         this.country = in.readString();
-        this.city = in.readString();
+
     }
 
     public static final Parcelable.Creator<CommunityObject> CREATOR = new Parcelable.Creator<CommunityObject>() {

@@ -8,7 +8,7 @@ import android.graphics.Bitmap;
 
 public class ImageObject {
 
-  Bitmap photo;
+    Bitmap photo;
 
     public Bitmap getPhoto() {
         return photo;

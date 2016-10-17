@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    >
+
+
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_marginTop="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/user_image_placeholder"
+            app:civ_border_color="#ffffff"
+            app:civ_border_width="0dp"
+
+            />
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_toEndOf="@+id/profile_image"
+            android:layout_marginRight="100dp"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+
+            android:layout_toRightOf="@+id/profile_image">
+            <TextView
+                android:id="@+id/prfile_name"
+                android:textColor="#343537"
+                android:text="Craig Lopez"
+                android:layout_width="250dp"
+                android:textSize="16sp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/profile_country"
+                android:textColor="#adadad"
+                android:text="Palestine"
+                android:layout_width="wrap_content"
+                android:textSize="14sp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+    <View
+
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#e9ebee" />
+
+
+</LinearLayout>

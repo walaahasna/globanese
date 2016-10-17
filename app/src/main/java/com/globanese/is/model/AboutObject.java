@@ -8,12 +8,12 @@ import io.realm.RealmObject;
 /**
  * Created by walaa on 09/06/16.
  */
-public class AboutObject extends RealmObject  implements Parcelable{
+public class AboutObject extends RealmObject implements Parcelable {
 
     String address;
     String community;
     String phone;
-    String   dob;
+    String dob;
     String dob_date;
     String dob_country;
 
@@ -82,8 +82,6 @@ public class AboutObject extends RealmObject  implements Parcelable{
     String job_name;
 
 
-
-
     public String getAddress() {
         return address;
     }
@@ -131,8 +129,6 @@ public class AboutObject extends RealmObject  implements Parcelable{
     public void setNationality(String nationality) {
         this.nationality = nationality;
     }
-
-
 
 
     public AboutObject() {

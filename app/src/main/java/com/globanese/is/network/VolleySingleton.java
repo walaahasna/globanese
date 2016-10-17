@@ -15,6 +15,8 @@ import java.net.CookiePolicy;
 /**
  * Created by hamdy on 6/6/15.
  */
+
+
 public class VolleySingleton {
 
     private static final String TAG = VolleySingleton.class.getSimpleName();

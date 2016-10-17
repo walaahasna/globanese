@@ -18,7 +18,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 /**
  * Created by jit on 01/09/2015.
  */
-public class MyRecyclerViewAdapt extends RecyclerView.Adapter<MyRecyclerViewAdapt.MyViewHolder>{
+public class MyRecyclerViewAdapt extends RecyclerView.Adapter<MyRecyclerViewAdapt.MyViewHolder> {
     Context context;
     List<AddFriendObject> Friends;
     MyRecyclerViewListener listener;
@@ -35,11 +35,12 @@ public class MyRecyclerViewAdapt extends RecyclerView.Adapter<MyRecyclerViewAdap
         Friends = friends;
     }
 
-    public MyRecyclerViewAdapt(Context context, List<AddFriendObject> Friends){
+    public MyRecyclerViewAdapt(Context context, List<AddFriendObject> Friends) {
         this.context = context;
         this.Friends = Friends;
     }
-    public void setRecyclerViewListener(MyRecyclerViewListener listener){
+
+    public void setRecyclerViewListener(MyRecyclerViewListener listener) {
         this.listener = listener;
     }
 
@@ -61,13 +62,13 @@ public class MyRecyclerViewAdapt extends RecyclerView.Adapter<MyRecyclerViewAdap
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder,final int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
 //        imageLoader = AppController.getInstance().getImageLoader();
-        AddFriendObject  s= Friends.get(position);
+        AddFriendObject s = Friends.get(position);
 ////////////////////city fragment/////////////////
 
         holder.tv1.setText(s.getName());
-         holder. thumbNail.setImageResource(s.getPic());
+        holder.thumbNail.setImageResource(s.getPic());
 
     }
 
@@ -77,22 +78,20 @@ public class MyRecyclerViewAdapt extends RecyclerView.Adapter<MyRecyclerViewAdap
     }
 
 
-
-
-
-    class MyViewHolder extends RecyclerView.ViewHolder{
+    class MyViewHolder extends RecyclerView.ViewHolder {
 
         CircleImageView thumbNail;
 
-        TextView   tv1;
+        TextView tv1;
+
         public MyViewHolder(View itemView) {
             super(itemView);
             tv1 = (TextView) itemView.findViewById(R.id.Fname);
-           thumbNail = (CircleImageView)itemView.findViewById(R.id.profile_image);
+            thumbNail = (CircleImageView) itemView.findViewById(R.id.profile_image);
         }
     }
 
-    public interface MyRecyclerViewListener{
+    public interface MyRecyclerViewListener {
         public void viewSelected(View v, int position);
     }
 }

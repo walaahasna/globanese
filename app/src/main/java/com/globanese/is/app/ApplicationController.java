@@ -14,14 +14,14 @@ import com.globanese.is.utils.SharedPrefSingleton;
  */
 public class ApplicationController extends MultiDexApplication {
     private static ApplicationController mInstance;
-
+public static Context con;
     @Override
     public void onCreate() {
         super.onCreate();
         mInstance = this;
         SharedPrefSingleton.init(this);
         VolleySingleton.getInstance();
-
+        con=getApplicationContext();
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
     }

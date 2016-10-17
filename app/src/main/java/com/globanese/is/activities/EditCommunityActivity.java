@@ -106,6 +106,7 @@ public class EditCommunityActivity extends BaseActivity {
             }
         });
 
+
         actv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -116,12 +117,12 @@ public class EditCommunityActivity extends BaseActivity {
                 edit_community.setText(name);
                 actv.setText(null);
                 actv.setHint("Add Community");
-
             }
         });
 
 
     }
+
 
     public void GetComuntity(final String token) {
         String url = Project_Web_Functions.BASE_URL+"/communities?access_token=" + token;

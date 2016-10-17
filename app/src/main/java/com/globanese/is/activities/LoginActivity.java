@@ -46,9 +46,11 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Locale;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+
 
 public class LoginActivity extends BaseActivity implements
         GoogleApiClient.OnConnectionFailedListener {
@@ -59,6 +61,7 @@ public class LoginActivity extends BaseActivity implements
     Button sign_up_button;
     @InjectView(R.id.login_button)
     Button login_button;
+
 
     @InjectView(R.id.forget_pass)
     View forget_pass;
@@ -72,7 +75,7 @@ public class LoginActivity extends BaseActivity implements
 
     @InjectView(R.id.skip)
     View skip;
-   public static EditText  email_edittext,password_edittext;
+    public static EditText email_edittext, password_edittext;
 
     private CallbackManager callbackManager;
     private LoginManager loginManager;
@@ -87,12 +90,9 @@ public class LoginActivity extends BaseActivity implements
         setContentView(R.layout.activity_login);
         ButterKnife.inject(this, this);
         instance = this;
-        StaticClass.overrideFonts(this,findViewById(android.R.id.content));
-          email_edittext=( EditText )findViewById(R.id.email_edittext);
-       password_edittext=( EditText )findViewById(R.id.password_edittext);
-
-
-
+        StaticClass.overrideFonts(this, findViewById(android.R.id.content));
+        email_edittext = (EditText) findViewById(R.id.email_edittext);
+        password_edittext = (EditText) findViewById(R.id.password_edittext);
 
 
 //        callbackManager = CallbackManager.Factory.create();
@@ -124,17 +124,17 @@ public class LoginActivity extends BaseActivity implements
 //        );
 
 
-
-                final Collection<String> permissions = Arrays.asList(
+        final Collection<String> permissions = Arrays.asList(
                 "public_profile"
-                , "user_friends","email","user_birthday"
+                , "user_friends", "email", "user_birthday"
 
         );
+
 
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,TimeLineActivity.class));
+                startActivity(new Intent(LoginActivity.this, TimeLineActivity.class));
                 finish();
 //                if(SignUpActivity.instance!=null){
 //                    SignUpActivity.instance.finish();
@@ -154,7 +154,11 @@ public class LoginActivity extends BaseActivity implements
             public void onClick(View v) {
                 if (validateLogin()) {
                     doLogin();
+                    // String deviceLocale = Locale.getDefault().getDisplayLanguage();
+                    String lang = Locale.getDefault().getLanguage();
+                    Log.d("deviceLocale",lang);
                 }
+
             }
         });
 
@@ -213,7 +217,7 @@ public class LoginActivity extends BaseActivity implements
         login_ln.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(LoginActivity.this, LinkedInLoginActivity.class),1001);
+                startActivityForResult(new Intent(LoginActivity.this, LinkedInLoginActivity.class), 1001);
 
 //                LISessionManager.getInstance(getApplicationContext()).init(LoginActivity.this, buildScope(), new AuthListener() {
 //                    @Override
@@ -234,8 +238,7 @@ public class LoginActivity extends BaseActivity implements
 //
 //                            @Override
 //                            public void onFinish() {
-//
-//                            }
+////                            }
 //                        });
 //                    }
 //
@@ -261,6 +264,8 @@ public class LoginActivity extends BaseActivity implements
                 .build();
 
 
+
+
         login_g.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -270,28 +275,27 @@ public class LoginActivity extends BaseActivity implements
         });
 
 
-
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN && resultCode==RESULT_OK) {
+        if (requestCode == RC_SIGN_IN && resultCode == RESULT_OK) {
 
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
         }
 
-        if(requestCode==1001){//linkedin
-            if(resultCode==RESULT_OK){
-                String token=data.getStringExtra("token");
-                long expires=data.getLongExtra("expires",0);
-                doLoginLinkedIn(token,expires);
+        if (requestCode == 1001) {//linkedin
+            if (resultCode == RESULT_OK) {
+                String token = data.getStringExtra("token");
+                long expires = data.getLongExtra("expires", 0);
+                doLoginLinkedIn(token, expires);
             }
         }
 
-        if(requestCode==1234 && resultCode==RESULT_OK){
+        if (requestCode == 1234 && resultCode == RESULT_OK) {
             getGoogleAccessToken();
         }
 
@@ -299,7 +303,7 @@ public class LoginActivity extends BaseActivity implements
 
     private void handleSignInResult(GoogleSignInResult result) {
 
-        Log.d("result","google");
+        Log.d("result", "google");
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
@@ -314,12 +318,12 @@ public class LoginActivity extends BaseActivity implements
 //            acct.getDisplayName();
         } else {
             // Signed out, show unauthenticated UI.
-            Log.d("error","signout");
+            Log.d("error", "signout");
         }
     }
 
 
-    void getGoogleAccessToken(){
+    void getGoogleAccessToken() {
         new AsyncTask<Void, Void, String>() {
             @Override
             protected String doInBackground(Void... params) {
@@ -335,10 +339,10 @@ public class LoginActivity extends BaseActivity implements
                                     + Scopes.PLUS_LOGIN + " "
                                     + Scopes.DRIVE_APPFOLDER + " "
                                     + "https://www.googleapis.com/auth/plus.login" + " "
-                                    + "https://www.googleapis.com/auth/userinfo.profile"+" "
+                                    + "https://www.googleapis.com/auth/userinfo.profile" + " "
                                     + "https://www.googleapis.com/auth/plus.profile.emails.read");
 
-                    Log.d("tokennnnnnn",sAccessToken+"");
+                    Log.d("tokennnnnnn", sAccessToken + "");
 
                     return sAccessToken;
 
@@ -360,7 +364,7 @@ public class LoginActivity extends BaseActivity implements
 
             @Override
             protected void onPostExecute(String sAccessToken) {
-                if(sAccessToken!=null) {
+                if (sAccessToken != null) {
                     doLoginGoogle(sAccessToken);
                 }
 
@@ -445,7 +449,7 @@ public class LoginActivity extends BaseActivity implements
                 ResponseObject responseObject = (ResponseObject) result;
                 if (responseObject.getStatus()) {
                     LogInUser user = new LogInUser();
-                    UserObject o= new UserObject();
+                    UserObject o = new UserObject();
                     o.setEmail("wah_2008@hotmail.com");
                     o.setLname("hasna");
                     saveUserObject(o);
@@ -453,6 +457,8 @@ public class LoginActivity extends BaseActivity implements
                     user.setLogin_type(LogInUser.LOGIN_TYPE_FACEBOOK);
 //                                    user.setEmail(email_edittext.getText().toString());
 //                                    user.setPassword(password_edittext.getText().toString());
+
+
                     user.setFb_token(token);
                     HashMap<String, String> items = (HashMap<String, String>) responseObject.getItems();
                     user.setAccess_token(items.get("access_token"));
@@ -462,7 +468,7 @@ public class LoginActivity extends BaseActivity implements
 
                     startActivity(new Intent(LoginActivity.this, TimeLineActivity.class));
                     finish();
-                     if (SignUpActivity.instance != null) {
+                    if (SignUpActivity.instance != null) {
                         SignUpActivity.instance.finish();
                     }
                 } else {
@@ -474,7 +480,6 @@ public class LoginActivity extends BaseActivity implements
             public void onFailure(Object result) {
                 Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_LONG).show();
             }
-
 
             @Override
             public void onFinish() {
@@ -630,7 +635,8 @@ public class LoginActivity extends BaseActivity implements
         );
 
     }
-    public static Bitmap getFacebookProfilePicture(String userID){
+
+    public static Bitmap getFacebookProfilePicture(String userID) {
         try {
             URL imageURL = new URL("https://graph.facebook.com/" + userID + "/picture?type=large");
             Bitmap bitmap = BitmapFactory.decodeStream(imageURL.openConnection().getInputStream());

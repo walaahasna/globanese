@@ -42,13 +42,16 @@ import co.lujun.androidtagview.TagContainerLayout;
 import co.lujun.androidtagview.TagView;
 
 
+
+
+///////////////////////////////
+
 public class EditNationalityActivity extends BaseActivity {
     TextView done;
     TextView edit_language;
     ImageView back;
     AutoCompleteTextView actv;
     NationalityObject a;
-
     String token;
     List<NationalityObject> Nationalites;
     public static List<NationalityObject> ListNASH;
@@ -89,7 +92,6 @@ public class EditNationalityActivity extends BaseActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent i = new Intent(EditNationalityActivity.this, AboutProfileActivity.class);
                 startActivity(i);
 
@@ -115,11 +117,10 @@ public class EditNationalityActivity extends BaseActivity {
             }
         });
 
-        String url = Project_Web_Functions.BASE_URL + "nationalities?access_token=" + token;
+        String url = Project_Web_Functions.BASE_URL + "/nationalities?access_token=" + token;
         Log.d(Project_Web_Functions.class.getName(), url);
         VolleyStringRequest stringRequest = new VolleyStringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
-
             public void onResponse(String response) {
                 Log.d(Project_Web_Functions.class.getName(), response.toString());
                 try {

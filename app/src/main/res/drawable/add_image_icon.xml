@@ -3,6 +3,7 @@
         android:height="30dp"
         android:viewportWidth="30.0"
         android:viewportHeight="30.0">
+
     <path
         android:pathData="M14.8,28.59C22.4,28.59 28.57,22.43 28.57,14.83C28.57,7.23 22.4,1.07 14.8,1.07C7.2,1.07 1.03,7.23 1.03,14.83C1.03,22.43 7.2,28.59 14.8,28.59ZM14.8,28.59"
         android:strokeLineCap="butt"

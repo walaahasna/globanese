@@ -17,6 +17,7 @@ import java.util.List;
 /**
  * Created by akshay on 1/2/15.
  */
+
 public class LanguageAdapter extends ArrayAdapter<LanguageObject> {
 
     Context context;
@@ -37,7 +38,6 @@ public class LanguageAdapter extends ArrayAdapter<LanguageObject> {
     }
 
 
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
@@ -45,6 +45,7 @@ public class LanguageAdapter extends ArrayAdapter<LanguageObject> {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.list_item_search, parent, false);
         }
+
         LanguageObject people = items.get(position);
         if (people != null) {
             TextView lblName = (TextView) view.findViewById(R.id.list_item);

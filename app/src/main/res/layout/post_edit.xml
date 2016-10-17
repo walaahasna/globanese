@@ -6,6 +6,8 @@
     android:background="#7f000000"
     >
 
+
+
     <RelativeLayout
 
         android:layout_marginTop="60dp"

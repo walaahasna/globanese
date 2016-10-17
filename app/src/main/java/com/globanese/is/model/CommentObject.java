@@ -17,6 +17,7 @@ public class CommentObject implements Parcelable {
     String  comment_id;
     Boolean is_like_user_comment;
     String like_count;
+    String ceated_at;
 
     public String getCeated_at() {
         return ceated_at;
@@ -26,7 +27,7 @@ public class CommentObject implements Parcelable {
         this.ceated_at = ceated_at;
     }
 
-    String ceated_at;
+
 
     public String getLike_count() {
         return like_count;

@@ -1,12 +1,16 @@
 package com.globanese.is.activities;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.net.Uri;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,9 +26,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
+import com.darsh.multipleimageselect.activities.AlbumSelectActivity;
+import com.darsh.multipleimageselect.helpers.Constants;
 import com.globanese.is.R;
 
 
@@ -39,12 +47,15 @@ import com.globanese.is.network.VolleyStringRequest;
 import com.globanese.is.realm.RealmSingleton;
 import com.globanese.is.utils.RealPathUtil;
 import com.globanese.is.utils.StaticClass;
+import com.gun0912.tedpicker.ImagePickerActivity;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,9 +64,11 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.realm.Realm;
 
+
 public class WritePostActivity extends BaseActivity {
     Boolean endofarray;
     ImageButton send_post;
+    private static final int INTENT_REQUEST_GET_IMAGES = 13;
     RequestClass req;
     byte[] image;
     String text;
@@ -80,6 +93,7 @@ public class WritePostActivity extends BaseActivity {
     List<byte[]> Array_photo;
     ArrayList<String> Array_photo_id;
     String token;
+    TimeLineActivity time;
 
     @Override
 
@@ -89,6 +103,7 @@ public class WritePostActivity extends BaseActivity {
         setContentView(R.layout.activity_write_post);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         StaticClass.overrideFonts(this, findViewById(android.R.id.content));
+ time=new TimeLineActivity();
 
         map = new HashMap<>();
         req = new RequestClass();
@@ -117,11 +132,13 @@ public class WritePostActivity extends BaseActivity {
 
         rv.setAdapter(b);
 
+
         b.setRecyclerViewListener(new HorizantalListAdapterforUploadImage.MyRecyclerViewListener() {
             @Override
             public void viewSelected(View v, int position) {
 
                 List_photos.remove(position);
+                Array_photo.remove(position);
                 b.notifyItemRemoved(position);
                 b.notifyItemRangeChanged(position, List_photos.size());
                 b.notifyDataSetChanged();
@@ -160,16 +177,16 @@ public class WritePostActivity extends BaseActivity {
 
         CircleImageView cimage = (CircleImageView) findViewById(R.id.profile_image);
 
-        BaseActivity b = new BaseActivity();
+       BaseActivity b = new BaseActivity();
         UserObject user = b.getUserObject();
-        String imge_url = b.getprofilephoto();
+        //String imge_url = b.getprofilephoto();
+//Log.d("imge_face",imge_url);
 
-
-        if (imge_url != null)
+        if (time.imge_url!= null)
 
         {
-            Picasso.with(WritePostActivity.this).load(imge_url).into(cimage);
-            Log.d("photo", imge_url);
+            Picasso.with(WritePostActivity.this).load(time.imge_url).into(cimage);
+            Log.d("photo", time.imge_url);
         } else {
 
             cimage.setImageResource(R.drawable.user_image_placeholder);
@@ -180,11 +197,12 @@ public class WritePostActivity extends BaseActivity {
         if (user.getFname() != null && user.getLname() != null)
 
             profile_name.setText(user.getFname() + "" + user.getLname());
+        Log.d("name",user.getFname() + "" + user.getLname());
 
 
         if (user.getFname() != null)
 
-            profile_name.setText(user.getFname());
+      profile_name.setText(user.getFname());
 
 
         layout_location.setOnClickListener(new View.OnClickListener() {
@@ -199,11 +217,12 @@ public class WritePostActivity extends BaseActivity {
         layout_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getImages();
                 video_link.setText(null);
                 layout_image.setVisibility(View.VISIBLE);
                 layout_video.setVisibility(View.GONE);
                 showimage = true;
-                choosePicDialog.show();
+               // choosePicDialog.show();
             }
         });
 
@@ -233,7 +252,7 @@ public class WritePostActivity extends BaseActivity {
             }
         });
 
-
+//////////////////////button
 
         send_post.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -243,21 +262,14 @@ public class WritePostActivity extends BaseActivity {
                 text = profile_text.getText().toString();
 
 
-                boolean status = checkvalidate();
-                if (status == true) {
-
                     if (Array_photo.size() > 0) {
-                        boolean sendPostRequest = false;
+
                         Log.d("Array_photo.size()", String.valueOf(Array_photo.size()));
                         for (int i = 0; i < Array_photo.size(); i++) {
-                            if (i == Array_photo.size()) {
-                                sendPostRequest = true;
-                            } else {
-                                sendPostRequest = false;
-                            }
 
-                            upload_image(token, Array_photo.get(i), sendPostRequest);
 
+                            upload_image(token, Array_photo.get(i));
+                            Log.d("Array_photo.size()", String.valueOf(i));
                         }
 
 
@@ -286,11 +298,6 @@ public class WritePostActivity extends BaseActivity {
                     }
 
 
-                } else {
-
-                    Toast.makeText(getApplicationContext(), "Enter Text or video link or Photo to make Post", Toast.LENGTH_SHORT).show();
-
-                }
 
 
             }
@@ -326,21 +333,29 @@ public class WritePostActivity extends BaseActivity {
 
         TextView gallery = (TextView) view.findViewById(R.id.choose_pic_gallery);
         TextView camera = (TextView) view.findViewById(R.id.choose_pic_camera);
-        gallery.setOnClickListener(new View.OnClickListener() {
+
+
+        /////croup
+
+            gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("image/jpg");
-                intent.putExtra("crop", "true");
-                intent.putExtra("aspectX", 1);
-                intent.putExtra("aspectY", 1);
-
+                Intent   intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+               intent.setType("image/jpg");
+                intent.putExtra("crop", "false");
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                 startActivityForResult(intent.createChooser(intent, "Choose Image"), REQUEST_IMAGE_GALLERY);
                 choosePicDialog.cancel();
+
+
+
             }
 
         });
+
+
+
 
 
         camera.setOnClickListener(new View.OnClickListener() {
@@ -349,17 +364,15 @@ public class WritePostActivity extends BaseActivity {
 
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 //
-
-
                 intent.putExtra("aspectX", 1);
                 intent.putExtra("aspectY", 1);
-//
-                intent.putExtra("return-data", true);
+//              intent.putExtra("return-data", true);
                 startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
-
                 choosePicDialog.cancel();
+
             }
         });
+
 
 
         choosePic.setView(view);
@@ -369,19 +382,26 @@ public class WritePostActivity extends BaseActivity {
     }
 
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d(requestCode + "", resultCode + ":" + List_photos.size());
+  /*  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d(requestCode + "", resultCode + "");
 
         if (requestCode == REQUEST_IMAGE_GALLERY || requestCode == REQUEST_IMAGE_CAPTURE) {
-
             if (resultCode == RESULT_OK) {
 
                 Bundle extras = data.getExtras();
-                if (extras != null) {
 
+                if (extras != null) {
                     resultImage = extras.getParcelable("data");
                     image = convertBitmapToByte(resultImage);
                     Array_photo.add(image);
+                    ArrayList<Uri>  image_uris = data.getParcelableArrayListExtra(ImagePickerActivity.EXTRA_IMAGE_URIS);
+                    try {
+                        Bitmap bm = BitmapFactory.decodeStream(
+                                getContentResolver().openInputStream( image_uris.get(0)));
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+
 
                     Log.e("array size", List_photos.size() + " ");
 
@@ -419,10 +439,47 @@ public class WritePostActivity extends BaseActivity {
 
         }
 //
-
-
     }
+*/
 
+
+  protected void onActivityResult(int requestCode, int resuleCode, Intent intent) {
+      super.onActivityResult(requestCode, resuleCode, intent);
+
+      if (requestCode == INTENT_REQUEST_GET_IMAGES && resuleCode == Activity.RESULT_OK ) {
+
+          ArrayList<Uri>  image_uris = intent.getParcelableArrayListExtra(ImagePickerActivity.EXTRA_IMAGE_URIS);
+
+Log.d("sizenew", String.valueOf(image_uris.size()));
+
+        for(int i=0;i<image_uris.size();i++) {
+
+
+            Bitmap bm = null;
+            //bm = BitmapFactory.decodeStream(getContentResolver().openInputStream( image_uris.get(i)));
+            bm = BitmapFactory.decodeFile(String.valueOf(image_uris.get(i)));
+
+            // bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), image_uris.get(i));
+
+
+            image = convertBitmapToByte(bm);
+            Array_photo.add(image);
+
+            if (image_uris.get(i) != null) {
+                o = new ImageObject();
+                o.setPhoto(bm);
+                List_photos.add(o);
+                b.notifyDataSetChanged();
+
+                Log.d("sizeHORI", String.valueOf( List_photos.size()));
+
+            }
+        }
+
+
+
+      }
+  }
 
     public byte[] convertBitmapToByte(Bitmap bmp) {
 
@@ -432,7 +489,13 @@ public class WritePostActivity extends BaseActivity {
         return byteArray;
     }
 
-    public void upload_image(final String token, final byte[] image, final boolean sendPostRequest) {
+    static int uploadedImagesCount = 0;
+
+
+
+
+    ////upload
+    public void upload_image(final String token, final byte[] image) {
         showProgressDialog();
         Log.d("image", image.length + "");
 
@@ -443,10 +506,12 @@ public class WritePostActivity extends BaseActivity {
 
                         try {
                             if (response.getBoolean("status") == (true)) {
+                                uploadedImagesCount=uploadedImagesCount+1;
                                 Log.d("response", response.toString());
                                 JSONObject photo_araay = response.getJSONObject("items");
                                 String image = photo_araay.getString("photo");
                                 String image_id = photo_araay.getString("id");
+
 
 
                                 Realm realm = RealmSingleton.getRealmInstance();
@@ -455,18 +520,30 @@ public class WritePostActivity extends BaseActivity {
                                 int id = user.getId();
                                 realm.commitTransaction();
 
-                                String imgeurl = "http://globanese.info/beta/uploads/users/" + id + "/profile_" + image;
+
+                                String imgeurl = "http://globanese.info/beta/uploads/users/" + id + "/" + image;
                                 Log.d("image_url", imgeurl);
-
+                                Log.d("image_id", image_id);
                                 Array_photo_id.add(image_id);
-                                Log.d("Array_photo_id", Array_photo_id.size() + ": k");
+                               Log.d("Array_photo_id size", Array_photo_id.size() + ": k");
+                               Log.d("uploadedImagesCount_b", String.valueOf(uploadedImagesCount));
+                               Log.d("size_photo_b", String.valueOf(Array_photo.size()));
+                               Log.d("size_photo_id_b", String.valueOf(Array_photo_id.size()));
 
 
-                                if (sendPostRequest == true) {
+                             if (Array_photo.size()==Array_photo_id.size()) {
+                                    Log.d("uploadedImagesCount", String.valueOf(uploadedImagesCount));
+                                    Log.d("size_photo_uplaod", String.valueOf(Array_photo.size()));
+                                    Log.d("size_photo_id_upload", String.valueOf(Array_photo_id.size()));
                                     MakePostReqest(Array_photo_id);
 
                                 }
 
+                               /* else{
+                                    dismissProgressDialog();
+                                    Toast.makeText(getApplicationContext(),"Falid to upload image Tray Again",Toast.LENGTH_SHORT).show();
+
+                                }*/
 
                             } else {
 
@@ -504,10 +581,11 @@ public class WritePostActivity extends BaseActivity {
         VolleySingleton.getInstance().addToRequestQueue(multipartRequest);
 
     }
-
+///////makepost
     public void MakePostReqest(ArrayList<String> array) {
 
         map.put("privacy", "1");
+
 
         if (profile_text.getText().toString() != null)
             Log.d("text", text);
@@ -518,7 +596,9 @@ public class WritePostActivity extends BaseActivity {
             map.put("location", location);
             Log.d("location", location);
         }
+
         Log.d("arraypost", array.size() + "");
+
 
 
         if (showimage == true) {
@@ -539,7 +619,7 @@ public class WritePostActivity extends BaseActivity {
 
     }
 
-
+///////////////final
     public void Send_Post(final String token, final Map<String, String> map) {
 
         String url = Project_Web_Functions.BASE_URL + "/post";
@@ -590,10 +670,19 @@ public class WritePostActivity extends BaseActivity {
 
         };
 
-        VolleySingleton.getInstance().addToRequestQueue(stringRequest);
 
+      int socketTimeout = 30000;//30 seconds - change to what you want
+       RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(policy);
+        VolleySingleton.getInstance().addToRequestQueue(stringRequest);
 
     }
 
+    private void getImages() {
+
+        Intent intent  = new Intent(this, ImagePickerActivity.class);
+        startActivityForResult(intent,INTENT_REQUEST_GET_IMAGES);
+
+    }
 
 }

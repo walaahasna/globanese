@@ -8,7 +8,7 @@
 
 
     <RelativeLayout
-        android:id="@+id/time_line_header"
+        android:id="@+id/hedar"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_alignParentTop="true"
@@ -16,6 +16,8 @@
 
 
         <RelativeLayout
+
+           android:id="@+id/time_line_header"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
@@ -28,7 +30,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/profile"
+                android:src="@drawable/user_image_placeholder"
                 app:civ_border_color="#ffffff"
                 app:civ_border_width="0dp"
 
@@ -69,23 +71,102 @@
                     android:padding="5dp" />
 
 
+                            </RelativeLayout>
+            <ImageButton
+                android:id="@+id/search_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="50dp"
+                android:background="#fff"
+                android:src="@drawable/timeline_search"
+                android:tint="@color/colorPrimary" />
+        </RelativeLayout>
+        <RelativeLayout
+android:visibility="gone"
+            android:background="#fff"
+            android:id="@+id/time_line_header2"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="5dp">
+
+            <RelativeLayout
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/search_shape">
+
+                <AutoCompleteTextView
+
+                    android:id="@+id/autoCompleteTextView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="35dp"
+                    android:background="@android:color/transparent"
+                    android:ems="10"
+                    android:hint="Search"
+                    android:paddingLeft="5dp"
+                    android:textColor="#7d7d7d"
+                    android:textColorHint="#7d7d7d"
+                    android:textSize="13sp">
+
+                </AutoCompleteTextView>
+
+                <ImageView
+                    android:id="@+id/search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/search" />
+
+                <ImageView
+                    android:id="@+id/cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/xcross" />
+
             </RelativeLayout>
+
+
+            <ImageButton
+                android:layout_marginTop="5dp"
+                android:id="@+id/write_post_hedaer2"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="5dp"
+                android:layout_alignParentRight="true"
+
+                android:background="@drawable/timeline_writepost" />
+
         </RelativeLayout>
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-    </RelativeLayout>
+
+
+
+
+
 
     <ListView
+
         android:id="@+id/profile_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/time_line_footer"
-        android:layout_below="@+id/time_line_header"
+        android:layout_below="@+id/hedar"
         android:layout_marginBottom="3dp"
         android:layout_marginTop="3dp"
         android:clipToPadding="false"
@@ -95,6 +176,17 @@
 
 
     </ListView>
+    <android.support.v7.widget.RecyclerView
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView"
+        android:dividerHeight="1dp"
+
+        android:layout_above="@+id/time_line_footer"
+        android:layout_below="@+id/hedar"
+
+        />
 
     <RelativeLayout
         android:id="@+id/time_line_footer"
@@ -107,6 +199,7 @@
         >
 
         <ImageButton
+
             android:id="@+id/home_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -149,21 +242,18 @@
                     android:layout_height="12dp"
                     android:layout_alignTop="@+id/message_button"
                     android:layout_marginLeft="15dp"
-                    android:background="@drawable/circle"
-
-                    />
+                    android:background="@drawable/circle" />
             </RelativeLayout>
 
             <ImageButton
-                android:id="@+id/search_button"
+                android:id="@+id/search2_button"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/message_button"
-
-                android:background="@drawable/timeline_search" />
-
+                android:background="@drawable/timeline_friend" />
         </LinearLayout>
+
 
         <ImageButton
             android:id="@+id/friend_button"
@@ -173,7 +263,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:background="@drawable/timeline_friend" />
+            android:background="@drawable/menu" />
 
 
     </RelativeLayout>

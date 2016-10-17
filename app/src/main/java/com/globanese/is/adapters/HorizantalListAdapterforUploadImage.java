@@ -20,7 +20,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 /**
  * Created by jit on 01/09/2015.
  */
-public class HorizantalListAdapterforUploadImage extends RecyclerView.Adapter<HorizantalListAdapterforUploadImage.MyViewHolder>{
+public class HorizantalListAdapterforUploadImage extends RecyclerView.Adapter<HorizantalListAdapterforUploadImage.MyViewHolder> {
     Context context;
     List<ImageObject> Images;
     MyRecyclerViewListener listener;
@@ -37,11 +37,12 @@ public class HorizantalListAdapterforUploadImage extends RecyclerView.Adapter<Ho
         Images = friends;
     }
 
-    public HorizantalListAdapterforUploadImage(Context context, List<ImageObject> Friends){
+    public HorizantalListAdapterforUploadImage(Context context, List<ImageObject> Friends) {
         this.context = context;
         this.Images = Friends;
     }
-    public void setRecyclerViewListener(MyRecyclerViewListener listener){
+
+    public void setRecyclerViewListener(MyRecyclerViewListener listener) {
         this.listener = listener;
     }
 
@@ -58,21 +59,21 @@ public class HorizantalListAdapterforUploadImage extends RecyclerView.Adapter<Ho
                 if (vh.getAdapterPosition() >= 0 && vh.getAdapterPosition() < Images.size())
                     listener.viewSelected(v, vh.getAdapterPosition());
 
-            //  Images.remove(vh.getAdapterPosition());
-             //   notifyItemRemoved(vh.getAdapterPosition());
-            //  notifyItemRangeChanged(vh.getAdapterPosition(), Images.size());
+                //  Images.remove(vh.getAdapterPosition());
+                //   notifyItemRemoved(vh.getAdapterPosition());
+                //  notifyItemRangeChanged(vh.getAdapterPosition(), Images.size());
             }
         });
         return vh;
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder,final int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
 //        imageLoader = AppController.getInstance().getImageLoader();
-        ImageObject  s=Images.get(position);
+        ImageObject s = Images.get(position);
 ////////////////////city fragment/////////////////
 
-         holder. thumbNail.setImageBitmap(s.getPhoto());
+        holder.thumbNail.setImageBitmap(s.getPhoto());
     }
 
     @Override
@@ -81,21 +82,18 @@ public class HorizantalListAdapterforUploadImage extends RecyclerView.Adapter<Ho
     }
 
 
-
-
-
-    class MyViewHolder extends RecyclerView.ViewHolder{
+    class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView thumbNail;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
-           thumbNail = (ImageView)itemView.findViewById(R.id.imageviewmain);
+            thumbNail = (ImageView) itemView.findViewById(R.id.imageviewmain);
         }
     }
 
-    public interface MyRecyclerViewListener{
+    public interface MyRecyclerViewListener {
         public void viewSelected(View v, int position);
     }
 }

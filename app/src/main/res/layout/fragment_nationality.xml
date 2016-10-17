@@ -34,18 +34,15 @@
             android:id="@+id/hedarlayout"
             android:textColor="#333"
             android:textSize="16sp"
-
-
             />
         <TextView
-            android:layout_width="wrap_content"
+                 android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Done"
             android:id="@+id/done"
             android:layout_gravity="right|center"
             android:layout_marginRight="10dp"
             android:padding="5dp"
-
             />
 
     </FrameLayout>

@@ -22,7 +22,6 @@ public class RealPathUtil {
             return getRealPathFromURI_BelowAPI11(context,uri);
         }
         return getRealPathFromURI_API11to18(context,uri);
-
     }
 
 

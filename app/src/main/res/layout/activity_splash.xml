@@ -5,8 +5,8 @@
     android:background="#fff"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    >
 
+    >
 
     <LinearLayout
         android:gravity="center"

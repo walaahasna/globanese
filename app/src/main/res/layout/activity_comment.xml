@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     android:background="#7f000000">
 
-    <RelativeLayout
 
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="12dp"
@@ -54,14 +54,16 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="8dp">
 
+
                     <ImageButton
                         android:id="@+id/close"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="5dp"
-                        android:background="#fff"
+                        android:background="@drawable/ic__core_row_selector"
+                        android:padding="3dp"
                         android:src="@drawable/close"
 
 
@@ -94,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -118,12 +120,11 @@
 
             </LinearLayout>
 
-
             <LinearLayout
                 android:id="@+id/layout_smile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="20dp"
                 android:layout_toRightOf="@+id/layout_ike"
                 android:orientation="horizontal">
 
@@ -151,7 +152,7 @@
                 android:id="@+id/layout_love"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="20dp"
                 android:layout_toRightOf="@+id/layout_smile"
                 android:orientation="horizontal">
 
@@ -177,12 +178,11 @@
 
             </LinearLayout>
 
-
             <LinearLayout
                 android:id="@+id/layout_angry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="20dp"
                 android:layout_toRightOf="@+id/layout_love"
                 android:orientation="horizontal">
 
@@ -306,7 +306,7 @@
                     android:textSize="15sp" />
 
                 <ImageButton
-                    android:id="@+id/write_comment"
+
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_alignParentRight="true"
@@ -316,6 +316,23 @@
                     android:layout_marginRight="10dp"
                     android:background="@drawable/ic_mood_black_24dp1" />
 
+
+                <ImageButton
+                    android:id="@+id/write_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="right|center"
+                    android:layout_marginRight="40dp"
+                    android:background="#fff"
+                    android:padding="5dp"
+                    android:src="@drawable/icon_send"
+                    android:text="Done"
+                    android:tint="#1a8cff"
+
+                    />
             </RelativeLayout>
 
         </RelativeLayout>

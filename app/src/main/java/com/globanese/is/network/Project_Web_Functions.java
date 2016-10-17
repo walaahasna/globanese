@@ -10,6 +10,7 @@ import com.android.volley.VolleyError;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class Project_Web_Functions {
   public static String BASE_URL = "http://globanese.info/beta/api/v1";
     static String login_by_email = BASE_URL + "/oauth/access_token";
@@ -38,6 +39,8 @@ public class Project_Web_Functions {
     static String update_user="http://192.168.1.51/globanese-clone/api/v1"+"/user";
     static String greate_post=BASE_URL+"/post";
     static String get_post=BASE_URL+"/posts/[id]";*/
+
+
 
 
     public void LoginByEmail(final String username, final String password, final UniversalCallBack callBack) {
@@ -244,6 +247,8 @@ public class Project_Web_Functions {
         VolleySingleton.getInstance().addToRequestQueue(stringRequest);
     }
 
+
+
     public void GetUserInfo(final String token, final UniversalCallBack callBack) {
         String url = get_own_user_info + token;
         Log.d(Project_Web_Functions.class.getName(), url);
@@ -253,6 +258,8 @@ public class Project_Web_Functions {
                 Log.d(Project_Web_Functions.class.getName(), response);
                 callBack.onFinish();
                 callBack.onResponse(new ExtractJSON().extractUserInfo(response));
+
+
             }
         }, new Response.ErrorListener() {
             @Override

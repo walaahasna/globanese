@@ -40,8 +40,17 @@ import java.util.Map;
 import co.lujun.androidtagview.TagContainerLayout;
 import co.lujun.androidtagview.TagView;
 
+
+
+
+
 public class EdiLanguageActivity extends BaseActivity  {
     TextView  done;
+
+
+
+
+
     TextView edit_language;
     ImageView back;
     AutoCompleteTextView actv;
@@ -120,17 +129,17 @@ public class EdiLanguageActivity extends BaseActivity  {
                     if (result.getBoolean("status")==true) {
 
 
+
                         JSONArray items = result.getJSONArray("items");
                         int id = 0;
                         String name = null;
                         Languages =new ArrayList<>();
 
-                        for (int i = 0; i < items.length(); i++) {
+                             for (int i = 0; i < items.length(); i++) {
                             JSONObject nationality = items.getJSONObject(i);
                             LanguageObject o=new LanguageObject();
                             id = nationality.getInt("id");
                             name = nationality.getString("name");
-
                             o.setName(name);
                             o.setId(id);
                             Languages.add(o);
@@ -143,7 +152,6 @@ public class EdiLanguageActivity extends BaseActivity  {
                         adapter = new LanguageAdapter
                                 (con , R.layout.fragment_language, R.id.list_item, Languages);
                         actv .setAdapter(adapter);
-
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

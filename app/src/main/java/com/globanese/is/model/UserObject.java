@@ -28,9 +28,19 @@ public class UserObject extends RealmObject implements Parcelable {
     private String email;
     private String deleted_at;
     private String created_at;
+
+
+    public CommunityObject getCommunity() {
+        return community;
+    }
+
+    public void setCommunity(CommunityObject community) {
+        this.community = community;
+    }
+
     private String updated_at;
 
-
+CommunityObject community;
 
     public int getId() {
         return id;

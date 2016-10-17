@@ -71,7 +71,7 @@ public class SignUpCompleteActivity extends BaseActivity {
     EditText email;
     String gender;
 
-    AlertDialog choosePicDialog;
+   AlertDialog choosePicDialog;
     int REQUEST_IMAGE_CAPTURE = 333;
     int REQUEST_IMAGE_GALLERY = 100;
     Bitmap resultImage;
@@ -80,12 +80,15 @@ public class SignUpCompleteActivity extends BaseActivity {
     CommunityObject selected_community;
     FrameLayout dob, gendert, comuity;
     public boolean show_gender, show_DB, show_community, showImge = false;
-
+    Project_Web_Functions network;
+Boolean  sendimge;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_complete);
-
+        network=new Project_Web_Functions();
+        sendimge=false;
+        show_gender=false;
         StaticClass.overrideFonts(this, findViewById(android.R.id.content));
         dob = (FrameLayout) findViewById(R.id.dob_layoutt);
         gendert = (FrameLayout) findViewById(R.id.gender_layoutt);
@@ -141,7 +144,7 @@ public class SignUpCompleteActivity extends BaseActivity {
                 final ArrayList<String> list = new ArrayList<>();
                 list.add("Male");
                 list.add("Female");
-                list.add("Other");
+
                 listView.setAdapter(new StringAdapter(SignUpCompleteActivity.this, R.layout.list_string_item, list));
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -258,6 +261,7 @@ public class SignUpCompleteActivity extends BaseActivity {
                 TextView title = (TextView) view.findViewById(R.id.title);
                 title.setText("Communities");
 
+
                 listView.setAdapter(new CommunitiesAdapter(SignUpCompleteActivity.this, R.layout.list_string_item_2, communityObjects));
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -286,6 +290,7 @@ public class SignUpCompleteActivity extends BaseActivity {
                     }
                 });
 
+
                 sheet_ok.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -301,8 +306,6 @@ public class SignUpCompleteActivity extends BaseActivity {
             }
         });
 ///
-
-
         profile_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -320,10 +323,12 @@ public class SignUpCompleteActivity extends BaseActivity {
         start_buttonn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (showImge == true)
-                saveProfileAccount();
-                updateUserInfo();
-
+               if (showImge == true) {
+                   saveProfileAccount();
+               }
+             else {
+                    updateUserInfo();
+                }
 
             }
         });
@@ -446,7 +451,6 @@ public class SignUpCompleteActivity extends BaseActivity {
                     image = convertBitmapToString(resultImage);
 
 
-
                 } else {
                     try {
                         Uri selectedimg = data.getData();
@@ -460,7 +464,7 @@ public class SignUpCompleteActivity extends BaseActivity {
                             profile_image.setImageBitmap(resultImage);
                             image = convertBitmapToString(resultImage);
                             showImge = true;
-                            show_gender = true;
+
                             show_DB = true;
                         }
 
@@ -475,7 +479,6 @@ public class SignUpCompleteActivity extends BaseActivity {
 
 
             showImge = true;
-            show_gender = true;
             show_DB = true;
         }
 //
@@ -560,20 +563,21 @@ public class SignUpCompleteActivity extends BaseActivity {
 
         if (show_community == true) {
             map.put("community_id", selected_community.getId() + "");
+            Log.d("community_id",selected_community.getId()+"");
 
         }
         if (show_gender == true) {
             Log.e("visibilty", "yes");
             map.put("gender", gender);
+            Log.d("gender",gender+"k");
 
         }
 
 
         if (show_DB == true) {
             map.put("dob", dob_text.getText().toString().trim());
-
+            Log.d("dob" ,dob_text.getText().toString().trim());
         }
-
 
         new Project_Web_Functions().UpdateUserInfo(getLogInUser().getAccess_token(), map, new UniversalCallBack() {
             @Override
@@ -617,9 +621,9 @@ public class SignUpCompleteActivity extends BaseActivity {
     }
 
 
-    private void saveProfileAccount() {
+   public  void saveProfileAccount() {
         showProgressDialog();
-        String url = "http://globanese.info/beta/api/v1/image";
+        String url =network.BASE_URL +"/image";
         VolleyMultipartRequest multipartRequest =
                 new VolleyMultipartRequest(Request.Method.POST, url, new Response.Listener<JSONObject>() {
                     public void onResponse(JSONObject response) {
@@ -633,6 +637,7 @@ public class SignUpCompleteActivity extends BaseActivity {
                                 String image = photo_araay.getString("photo");
 
 
+
                                 Realm realm = RealmSingleton.getRealmInstance();
                                 UserObject user = realm.where(UserObject.class).findFirst();
                                 realm.beginTransaction();
@@ -642,7 +647,11 @@ public class SignUpCompleteActivity extends BaseActivity {
                                 Log.d("image_url",image);
                                 user.setPhoto(image );
                                 realm.commitTransaction();
+                                sendimge=true;
 
+                                if(sendimge==true&&image!=null&&!image.equals(null)&&!image.equals(""))
+                                 updateUserInfo();
+                                Log.d("sendimge", String.valueOf(sendimge));
 
 
                             } else {
@@ -668,6 +677,7 @@ public class SignUpCompleteActivity extends BaseActivity {
 
                         return params;
                     }
+
 
                     protected Map<String, VolleyMultipartRequest.DataPart> getByteData() {
                         Map<String, DataPart> params = new HashMap<>();

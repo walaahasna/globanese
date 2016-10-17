@@ -28,13 +28,16 @@ import java.util.Map;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
+
 public class AboutProfileActivity extends BaseActivity {
+
 
     public static TextView edit_address, edit_community, edit_phone, edit_dob, edit_language, edit_nationality, edit_job;
     public static TextView textview_dobcountry, textView_address, textView_community, textview_dob, textview_phone, textView_language, textView_nationality, textview_job_name, textview_job_place;
     public static String aadress1, country, dob, phone, postion, company, language, nationality, website, country_dob;
     @InjectView(R.id.back)
     View back;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +98,7 @@ public class AboutProfileActivity extends BaseActivity {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(AboutProfileActivity.this,ProfileActivity.class);
+                Intent i = new Intent(AboutProfileActivity.this, ProfileActivity.class);
                 startActivity(i);
             }
         });
@@ -113,8 +116,11 @@ public class AboutProfileActivity extends BaseActivity {
         edit_community.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 Intent community = new Intent(AboutProfileActivity.this, EditCommunityActivity.class);
                 startActivity(community);
+
 
             }
         });
@@ -178,7 +184,7 @@ public class AboutProfileActivity extends BaseActivity {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse("http://"+website));
+                intent.setData(Uri.parse("http://" + website));
                 startActivity(intent);
             }
         });
@@ -194,7 +200,7 @@ public class AboutProfileActivity extends BaseActivity {
 
         showProgressDialog();
 
-        String url = Project_Web_Functions.BASE_URL+"/user?access_token=" + token;
+        String url = Project_Web_Functions.BASE_URL + "/user?access_token=" + token;
         Log.d(Project_Web_Functions.class.getName(), url);
         VolleyStringRequest stringRequest = new VolleyStringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -222,7 +228,6 @@ public class AboutProfileActivity extends BaseActivity {
                             }
 
                         }
-
 
 
                         if (!items.isNull("dob")) {
@@ -291,13 +296,13 @@ public class AboutProfileActivity extends BaseActivity {
                         }
 
 
-                        if(!items.isNull("community")){
+                        if (!items.isNull("community")) {
 
-                        JSONObject comunit = items.getJSONObject("community");
-                        if (!comunit.isNull("country"))
-                            country = comunit.getString("country");
+                            JSONObject comunit = items.getJSONObject("community");
+                            if (!comunit.isNull("country"))
+                                country = comunit.getString("country");
 
-                        textView_community.setText(country);
+                            textView_community.setText(country);
 
                         }
                     }

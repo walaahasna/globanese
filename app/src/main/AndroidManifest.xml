@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
     package="com.globanese.is">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -11,10 +10,12 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-feature android:name="android.hardware.camera" />
     <uses-feature
-        android:name="android.hardware.camera"
-        android:required="true" />
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
 
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <supports-screens
         android:anyDensity="true"
@@ -28,9 +29,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:theme="@style/AppTheme"
-
-        >
+        android:theme="@style/AppTheme">
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -39,7 +38,6 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".activities.MainActivity">
-
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -76,9 +74,8 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".activities.SignUpCompleteActivity"
-            android:theme="@style/AppThemeDetails"
             android:configChanges="orientation|keyboardHidden|screenSize"
-
+            android:theme="@style/AppThemeDetails"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.linkedin.LinkedInLoginActivity"
@@ -88,16 +85,12 @@
             android:theme="@style/AppThemeDetails"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".activities.AboutProfileActivity" />
-        <activity android:name=".activities.PostDetailActivity" />
-        <activity android:name=".activities.TimeLineActivity"
-
-            />
+        <activity android:name=".activities.TimeLineActivity" />
         <activity android:name=".activities.HorizantalRecycleView" />
         <activity
             android:name=".activities.CommentActivity"
             android:theme="@style/AppThemeDetails"
             android:windowSoftInputMode="stateHidden" />
-
         <activity android:name=".activities.EditNationalityActivity" />
         <activity android:name=".activities.EditAddressActivity" />
         <activity android:name=".activities.EditCommunityActivity" />
@@ -106,20 +99,38 @@
         <activity android:name=".activities.EdiLanguageActivity" />
         <activity android:name=".activities.EditJobActivity" />
         <activity
-            android:name=".activities.Main2Activity"
+            android:name=".activities.DeletePostActivity"
             android:theme="@style/AppThemeDetails"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".activities.WritePostActivity"
+        <activity
+            android:name=".activities.WritePostActivity"
             android:theme="@style/AppThemeDetails"
-            android:windowSoftInputMode="stateHidden"
-
-            />
-        <activity android:name=".fragments.HorizontalDropDownIconMenu"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".fragments.HorizontalDropDownIconMenu"
             android:theme="@style/AppThemeDetails"
-            android:windowSoftInputMode="stateHidden"
-
-            />
-        <activity android:name=".activities.LocationActivity"></activity>
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".activities.LocationActivity" />
+        <activity
+            android:name=".activities.ShareActivity"
+            android:theme="@style/AppThemeDetails"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.darsh.multipleimageselect.activities.AlbumSelectActivity"
+            android:theme="@style/MultipleImageSelectTheme">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AppInfoPolicy.TermActivity" />
+        <activity android:name=".AppInfoPolicy.CookiActivity" />
+        <activity android:name=".AppInfoPolicy.DataPolicyActivity" />
+        <activity
+            android:name="com.gun0912.tedpicker.ImagePickerActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.SearchActivity" />
+        <activity android:name=".activities.Search2Activity" />
+        <activity android:name=".activities.ProfileFriendActivity"></activity>
     </application>
 
 </manifest>

@@ -4,13 +4,12 @@ apply plugin: 'realm-android'
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
-
     defaultConfig {
         applicationId "com.globanese.is"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.0.2"
         multiDexEnabled = true
 
     }
@@ -44,18 +43,12 @@ repositories {
 }
 
 repositories {
-    maven {
-        url "https://jitpack.io"
-    }
+    maven { url "https://repo.commonsware.com.s3.amazonaws.com" }
+    maven { url "https://jitpack.io" }
+
 }
 
 
-repositories {
-    maven {
-
-        url "https://jitpack.io"
-    }
-}
 android {
     useLibrary 'org.apache.http.legacy'
 }
@@ -68,25 +61,24 @@ dependencies {
     //compile 'com.github.Kennyc1012:BottomSheet:2.1.2'
     //compile 'com.cocosw:bottomsheet:1.+@aar'
     compile project(':library:StikkyHeader')
-    compile 'co.lujun:androidtagview:1.0.3'
 
-    compile 'com.android.support:appcompat-v7:23.2.0'
-    compile 'com.android.support:design:23.2.0'
-    compile 'de.hdodenhof:circleimageview:2.0.0'
+    //compile 'com.github.curioustechizen.android-ago:library:<LATEST_VERSION>'
+
+
+    compile 'co.lujun:androidtagview:1.0.3'
+    compile'com.android.support:appcompat-v7:24.2.0'
+    compile 'com.android.support:design:24.2.0'
+    compile'de.hdodenhof:circleimageview:2.0.0'
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile 'com.jakewharton:butterknife:6.0.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.google.code.gson:gson:2.4'
-
     compile 'com.facebook.android:facebook-android-sdk:4.12.0'
-
     compile 'com.google.android.gms:play-services-auth:8.3.0'
     compile 'com.google.android.gms:play-services-plus:8.3.0'
-    //compile 'com.github.curioustechizen.android-ago:library:<LATEST_VERSION>'
-
     compile 'com.chootdev:timezago:1.1.6'
     compile 'com.github.clans:fab:1.6.1'
     compile 'com.shamanland:fab:0.0.8'
-
-
+    compile 'com.github.darsh2:MultipleImageSelect:v0.0.4'
+    compile 'com.github.ParkSangGwon:TedPicker:v1.0.10'
 }
